@@ -18,38 +18,37 @@
     <div class="container">
       <div class="card text-center my-3">
         <div class="card-header py-2">
-          <strong>로또번호생성 <small class="text-muted" th:text="'ID.'+${lotto.getLottoID()}">#22334242</small></strong>
+          <strong>로또번호생성 <small class="text-muted" th:text="${lotto.getLottoID()}">#22334242</small></strong>
         </div>
-        <div class="card-body mx-auto pb-1 d-flex">
-
-          <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-               th:attrappend="class=| bg-${lotto.getLottoNumber1Color()}|"  style="width: 2.5rem; height: 2.5rem;">
-              <span class="fw-bold text-light" th:text="${lotto.lottoNumber1}">45</span>
+        <div class="card-body mx-auto pb-1">
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber1Color()}|" style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber1}">1</p>
           </div>
-
-          <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-               th:attrappend="class=| bg-${lotto.getLottoNumber2Color()}|"  style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${lotto.lottoNumber2}">45</span>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber2Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber2}">15</p>
           </div>
-
-          <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-               th:attrappend="class=| bg-${lotto.getLottoNumber3Color()}|"  style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${lotto.lottoNumber3}">45</span>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber3Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber3}">25</p>
           </div>
-
-          <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-               th:attrappend="class=| bg-${lotto.getLottoNumber4Color()}|"  style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${lotto.lottoNumber4}">45</span>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber4Color()}|" style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber4}">38</p>
           </div>
-
-          <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-               th:attrappend="class=| bg-${lotto.getLottoNumber5Color()}|"  style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${lotto.lottoNumber5}">45</span>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber5Color()}|" style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber5}">40</p>
           </div>
-
-          <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-               th:attrappend="class=| bg-${lotto.getLottoNumber6Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber6Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber6}">42</p>
+          </div>
+          -->
+          <div>
+            <div class="d-inline-flex align-items-center justify-content-center rounded-circle mx-2" th:attrappend="class=| bg-${lotto.getLottoNumber6Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${lotto.lottoNumber6}">45</span>
+            </div>
+          </div>
+          <div>
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle" th:attrappend="class=| bg-${lotto.getLottoNumber6Color()}|"  style="width: 2.5rem; height: 2.5rem;">
             <span class="fw-bold text-light" th:text="${lotto.lottoNumber6}">45</span>
+          </div>
           </div>
 
         </div>
