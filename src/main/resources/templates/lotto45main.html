@@ -18,30 +18,32 @@
     <div class="container">
       <div class="card text-center my-3">
         <div class="card-header py-2">
-          <strong>로또번호생성 <small class="text-muted">#22334242 / 223회</small></strong>
+          <strong>로또번호생성 <small class="text-muted" th:text="${lotto.getLottoID()}">#22334242</small></strong>
         </div>
         <div class="card-body mx-auto pb-1">
-          <div class="d-inline-block bg-warning rounded-circle position-relative" style="width: 2.5rem; height: 2.5rem;">
-            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle" th:text="${lotto.lottoNumber1}">1</p>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber1Color()}|" style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber1}">1</p>
           </div>
-          <div class="d-inline-block bg-warning rounded-circle position-relative" style="width: 2.5rem; height: 2.5rem;">
-            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle" th:text="${lotto.lottoNumber2}">15</p>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber2Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber2}">15</p>
           </div>
-          <div class="d-inline-block bg-warning rounded-circle position-relative" style="width: 2.5rem; height: 2.5rem;">
-            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle" th:text="${lotto.lottoNumber3}">25</p>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber3Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber3}">25</p>
           </div>
-          <div class="d-inline-block bg-warning rounded-circle position-relative" style="width: 2.5rem; height: 2.5rem;">
-            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle" th:text="${lotto.lottoNumber4}">38</p>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber4Color()}|" style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber4}">38</p>
           </div>
-          <div class="d-inline-block bg-warning rounded-circle position-relative" style="width: 2.5rem; height: 2.5rem;">
-            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle" th:text="${lotto.lottoNumber5}">40</p>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber5Color()}|" style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber5}">40</p>
           </div>
-          <div class="d-inline-block bg-warning rounded-circle position-relative" style="width: 2.5rem; height: 2.5rem;">
-            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle" th:text="${lotto.lottoNumber6}">42</p>
+          <div class="d-inline-block rounded-circle position-relative" th:attrappend="class=| bg-${lotto.getLottoNumber6Color()}|"  style="width: 2.5rem; height: 2.5rem;">
+            <p class="fw-bold align-self-center position-absolute top-50 start-50 translate-middle text-light" th:text="${lotto.lottoNumber6}">42</p>
           </div>
         </div>
-        <div class="mx-auto pb-2"><small class="text-muted">2023-02-03:00:00</small></div>
+        <div class="mx-auto pb-2"><small class="text-muted" th:text="${#temporals.format(lotto.getLocalDateTime(),'yyyy-MM-dd HH:mm:ss')}">2023-02-03:00:00</small></div>
       </div>
+
+
       <h4 class="text-center">로또 번호 생성 내역</h4>
       <div class="row">
         <div class="col-6 text-center">
