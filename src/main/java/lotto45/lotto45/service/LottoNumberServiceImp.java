@@ -6,8 +6,7 @@ import lotto45.lotto45.repository.LottoNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class LottoNumberServiceImp implements LottoNumberService {
@@ -40,6 +39,13 @@ public class LottoNumberServiceImp implements LottoNumberService {
 
     @Override
     public List<Lotto> lastLottoNumber8() {
-        return new ArrayList<Lotto>(lottoNumberRepository.lastLottoNumber8());
+        List<Lotto> lottoList = new ArrayList<Lotto>();
+        Queue<Lotto> lottoQueue = lottoNumberRepository.lastLottoNumber8();
+
+        for (Lotto lotto : lottoQueue) {
+            lottoList.add(0, lotto);
+        }
+
+        return lottoList;
     }
 }
