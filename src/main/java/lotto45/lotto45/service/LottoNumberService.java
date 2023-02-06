@@ -3,6 +3,7 @@ package lotto45.lotto45.service;
 import lotto45.lotto45.domain.Lotto;
 
 import java.util.List;
+import java.util.Queue;
 
 public interface LottoNumberService {
 
@@ -12,8 +13,7 @@ public interface LottoNumberService {
 
     void findLotto(Lotto lottoID);
 
-    void findLotto(Lotto lottoNumber1, Lotto lottoNumber2, Lotto lottoNumber3, Lotto lottoNumber4, Lotto lottoNumber5, Lotto lottoNumber6);
-
-    List<Integer> lastLottoNumber8();
+    void findLotto(Lotto lottoNumber1,Lotto lottoNumber2,Lotto lottoNumber3,Lotto lottoNumber4,Lotto lottoNumber5,Lotto lottoNumber6);
+    Queue<Lotto> lastLottoNumber8();
 
 }
