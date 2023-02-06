@@ -2,9 +2,9 @@ package lotto45.lotto45.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,13 +16,13 @@ public class Lotto {
     private long id;
     private Map<Integer, LottoColor> lottoColorMap;
     private List<Integer> lottoNumArr;
-    private LocalDateTime date;
-    private int turn;
+    private LocalDateTime dateTime;
+    private int rounds;
 
     public Lotto(List<Integer> lottoNumArr) {
         this.lottoNumArr = lottoNumArr;
         this.lottoColorMap = new HashMap<>();
-        this.date = LocalDateTime.now();
+        this.dateTime = LocalDateTime.now();
 
         if (this.lottoNumArr.size() != 6) {
             throw new RuntimeException("로또 숫자는 6개 입니다.");
@@ -43,9 +43,26 @@ public class Lotto {
             }
         }
 
-        // 토요일 10시 기준으로 회차 넘어간다고 하면
-        // 토요일 10시 부터 다음주 토요일 10시까지가 한 회차
-        // 기준 회차가 하나 필요하다 1000회의 토요일 10시를 기준으로 하자
+        this.rounds = this.findRounds();
+    }
 
+    private int findRounds() {
+
+        // 기준 회차를 1000회차를 기준으로 잡음
+        LocalDateTime standardDateTime = LocalDateTime.of(2022, 1, 29, 22, 0);
+        long betweenDays = ChronoUnit.DAYS.between(standardDateTime, this.dateTime);
+        long betweenHours = ChronoUnit.HOURS.between(standardDateTime, this.dateTime);
+        int standardRounds = 1000;
+
+        if ((betweenDays % 7) == 0) {
+            if ((betweenHours - betweenDays * 24) >= 0) {
+                standardRounds += (betweenDays / 7) + 1;
+            } else {
+                standardRounds += (betweenDays / 7);
+            }
+        } else {
+            standardRounds += (betweenDays / 7) + 1;
+        }
+        return standardRounds;
     }
 }
