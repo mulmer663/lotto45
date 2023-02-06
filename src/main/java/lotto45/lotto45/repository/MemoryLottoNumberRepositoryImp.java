@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
+//@Repository
 public class MemoryLottoNumberRepositoryImp implements LottoNumberRepository {
 
     private final Map<Long, Lotto> memoryRepository;
@@ -20,7 +20,7 @@ public class MemoryLottoNumberRepositoryImp implements LottoNumberRepository {
 
     @Override
     public void save(Lotto lotto) {
-        memoryRepository.put(lotto.getLottoID(), lotto);
+        memoryRepository.put(lotto.getId(), lotto);
 
         if (memoryLastLottoNumberRepository.size() >= 8) {
             memoryLastLottoNumberRepository.add(lotto);
@@ -31,12 +31,7 @@ public class MemoryLottoNumberRepositoryImp implements LottoNumberRepository {
     }
 
     @Override
-    public Lotto findLottoId(Lotto lotto) {
-        return memoryRepository.get(lotto.getLottoID());
-    }
-
-    @Override
-    public Lotto findRound(Lotto lotto) {
+    public List<Lotto> findRound(int rounds) {
         return null;
     }
 
