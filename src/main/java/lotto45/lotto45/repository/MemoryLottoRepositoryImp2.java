@@ -10,10 +10,19 @@ public class MemoryLottoRepositoryImp2 implements LottoNumberRepository {
 
     private static final Map<Long, Lotto> store = new HashMap<>();
     private static long sequence = 0L;
+    private static final Queue<Lotto> lottoQueue = new LinkedList<>();
 
     @Override
     public void save(Lotto lotto) {
         lotto.setId(++sequence);
+
+        if (lottoQueue.size() < 8) {
+            lottoQueue.add(lotto);
+        } else if (lottoQueue.size() == 8) {
+            lottoQueue.poll();
+            lottoQueue.add(lotto);
+        }
+
         store.put(lotto.getId(), lotto);
     }
 
@@ -32,16 +41,6 @@ public class MemoryLottoRepositoryImp2 implements LottoNumberRepository {
 
     @Override
     public Queue<Lotto> lastLottoNumber8() {
-        Queue<Lotto> lottoQueue = new LinkedList<>();
-
-        for (Long key : store.keySet()) {
-            if (key <= 8) {
-                lottoQueue.add(store.get(key));
-            } else {
-                break;
-            }
-        }
-
         return lottoQueue;
     }
 
