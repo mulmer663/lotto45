@@ -14,11 +14,11 @@ import java.util.Queue;
 public class LottoNumberServiceImp implements LottoNumberService {
 
     private final LottoNumberArrayList lottoNumberArrayList;
-    private final LottoNumberRepository memoryLottoNumberRepository;
+    private final LottoNumberRepository lottoNumberRepository;
 
     @Autowired
-    public LottoNumberServiceImp() {
-        this.memoryLottoNumberRepository = new MemoryLottoNumberRepositoryImp();
+    public LottoNumberServiceImp(LottoNumberRepository lottoNumberRepository) {
+        this.lottoNumberRepository = lottoNumberRepository;
         this.lottoNumberArrayList = new LottoNumberArrayList();
     }
 
@@ -52,6 +52,6 @@ public class LottoNumberServiceImp implements LottoNumberService {
 
     @Override
     public Queue<Lotto> lastLottoNumber8() {
-        return memoryLottoNumberRepository.lastLottoNumber8();
+        return lottoNumberRepository.lastLottoNumber8();
     }
 }
