@@ -9,11 +9,7 @@ public interface LottoNumberService {
 
     Lotto create();
 
-    void save(Lotto lotto);
-
-    void findLotto(Lotto lottoID);
-
     void findLotto(Lotto lottoNumber1,Lotto lottoNumber2,Lotto lottoNumber3,Lotto lottoNumber4,Lotto lottoNumber5,Lotto lottoNumber6);
-    Queue<Lotto> lastLottoNumber8();
+    List<Lotto> lastLottoNumber8();
 
 }

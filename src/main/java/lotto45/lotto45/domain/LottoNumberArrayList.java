@@ -1,4 +1,4 @@
-package lotto45.lotto45.service;
+package lotto45.lotto45.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

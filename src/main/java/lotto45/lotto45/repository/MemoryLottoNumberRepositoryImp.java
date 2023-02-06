@@ -12,7 +12,6 @@ public class MemoryLottoNumberRepositoryImp implements LottoNumberRepository {
     private final Map<Long, Lotto> memoryRepository;
     private final Queue<Lotto> memoryLastLottoNumberRepository;
 
-    @Autowired
     public MemoryLottoNumberRepositoryImp() {
         this.memoryRepository = new HashMap<>();
         this.memoryLastLottoNumberRepository = new LinkedList<>();
