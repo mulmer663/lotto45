@@ -19,7 +19,6 @@ public class LottoNumberServiceImp implements LottoNumberService {
         this.lottoNumberRepository = lottoNumberRepository;
     }
 
-
     @Override
     public Lotto create() {
         LottoNumberArrayList lottoNumberArrayList = new LottoNumberArrayList();
@@ -29,11 +28,14 @@ public class LottoNumberServiceImp implements LottoNumberService {
         return lotto;
     }
 
-
+    @Override
+    public List<Lotto> findByRounds(int rounds) {
+        return lottoNumberRepository.findByRounds(rounds);
+    }
 
     @Override
-    public void findLotto(Lotto lottoNumber1, Lotto lottoNumber2, Lotto lottoNumber3, Lotto lottoNumber4, Lotto lottoNumber5, Lotto lottoNumber6) {
-
+    public List<Lotto> findAll() {
+        return lottoNumberRepository.findAll();
     }
 
     @Override

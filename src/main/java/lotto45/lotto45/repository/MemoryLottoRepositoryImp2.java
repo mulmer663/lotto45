@@ -27,7 +27,7 @@ public class MemoryLottoRepositoryImp2 implements LottoNumberRepository {
     }
 
     @Override
-    public List<Lotto> findRound(int rounds) {
+    public List<Lotto> findByRounds(int rounds) {
         List<Lotto> lottos = new ArrayList<>();
 
         for (Lotto savedLotto : store.values()) {

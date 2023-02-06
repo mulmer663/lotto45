@@ -8,8 +8,8 @@ import java.util.Queue;
 public interface LottoNumberService {
 
     Lotto create();
-
-    void findLotto(Lotto lottoNumber1,Lotto lottoNumber2,Lotto lottoNumber3,Lotto lottoNumber4,Lotto lottoNumber5,Lotto lottoNumber6);
+    List<Lotto> findByRounds(int rounds);
+    List<Lotto> findAll();
     List<Lotto> lastLottoNumber8();
 
 }

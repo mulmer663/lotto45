@@ -30,7 +30,7 @@ public class MemoryLottoNumberRepositoryImp implements LottoNumberRepository {
     }
 
     @Override
-    public List<Lotto> findRound(int rounds) {
+    public List<Lotto> findByRounds(int rounds) {
         return null;
     }
 
