@@ -1,5 +1,6 @@
 package lotto45.lotto45.service;
 
+import lombok.Getter;
 import lotto45.lotto45.domain.Lotto;
 import lotto45.lotto45.repository.LottoNumberRepository;
 import lotto45.lotto45.repository.MemoryLottoNumberRepositoryImp;
@@ -28,9 +29,10 @@ public class LottoNumberServiceImp implements LottoNumberService {
 
     @Override
     public Lotto create() {
-        this.lottoNumberArrayList.shuffle();
         List<Integer> tempNumber = this.lottoNumberArrayList.sixLottoNum();
-        return new Lotto(tempNumber.get(0), tempNumber.get(1), tempNumber.get(2), tempNumber.get(3), tempNumber.get(4), tempNumber.get(5));
+
+        return new Lotto(tempNumber);
+
     }
 
     @Override
