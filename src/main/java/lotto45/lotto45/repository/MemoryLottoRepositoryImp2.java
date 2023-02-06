@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
+//@Repository
 public class MemoryLottoRepositoryImp2 implements LottoNumberRepository {
 
     private static final Map<Long, Lotto> store = new HashMap<>();

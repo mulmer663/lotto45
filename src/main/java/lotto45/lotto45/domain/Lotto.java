@@ -5,29 +5,36 @@ import lombok.Setter;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-//@Entity
+@Entity
 @Getter
 public class Lotto {
 
     @Id
+    @GeneratedValue
     @Setter
     private long id;
     @ElementCollection
-    private NavigableSet<Integer> lottoNumber = new TreeSet<>();
+    private List<Integer> lottoNumber = new ArrayList<>();
     @ElementCollection
     private Map<Integer, LottoColor> lottoColorMap;
     private LocalDateTime dateTime;
     private int rounds;
 
     public Lotto() {
-        while (lottoNumber.size() < 6) {
-            lottoNumber.add((int)(Math.random()*45)+1);
+        NavigableSet<Integer> lottoTreeSet = new TreeSet<>();
+
+        while (lottoTreeSet.size() < 6) {
+            lottoTreeSet.add((int)(Math.random()*45)+1);
         }
+
+        this.lottoNumber.addAll(lottoTreeSet);
         this.lottoColorMap = new HashMap<>();
         this.dateTime = LocalDateTime.now();
 
