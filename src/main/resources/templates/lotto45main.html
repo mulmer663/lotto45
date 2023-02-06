@@ -35,34 +35,37 @@
 
         </div>
         <div class="mx-auto pb-2">
-            <small class="text-muted" th:text="${#temporals.format(lotto.getDateTime,'yyyy-MM-dd HH:mm:ss')}">2023-02-03:00:00</small>
+            <small class="text-muted"
+                   th:text="${#temporals.format(lotto.getDateTime,'yyyy-MM-dd HH:mm:ss')}">2023-02-03:00:00</small>
         </div>
     </div>
 
 
     <h4 class="text-center">로또 번호 생성 내역</h4>
     <div class="row">
-        <div class="col-md-6">
-            <div class="card text-center my-3">
-                <div class="card-header py-2">
-                    <strong>로또번호생성 <small class="text-muted" th:text="'ID.'+${lotto.id}">#22334242</small></strong>
-                </div>
-                <div class="card-body mx-auto pb-1 d-flex">
+        <th:block th:each="lottoHistory : ${last8Numbers}">
+            <div class="col-md-6">
+                <div class="card text-center my-3">
+                    <div class="card-header py-2">
+                        <strong>로또번호생성 <small class="text-muted" th:text="'ID.'+${lottoHistory.id}">#22334242</small></strong>
+                    </div>
+                    <div class="card-body mx-auto pb-1 d-flex">
 
-                    <th:block th:each="lottoNum : ${lotto.lottoNumArr}">
-                        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-                             th:attrappend="class=| bg-${lotto.lottoColorMap.get(lottoNum)}|"
-                             style="width: 2.5rem; height: 2.5rem;">
-                            <span class="fw-bold text-light" th:text="${lottoNum}">45</span>
-                        </div>
-                    </th:block>
+                        <th:block th:each="lottoNum : ${lottoHistory.lottoNumArr}">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                                 th:attrappend="class=| bg-${lottoHistory.lottoColorMap.get(lottoNum)}|"
+                                 style="width: 2.5rem; height: 2.5rem;">
+                                <span class="fw-bold text-light" th:text="${lottoNum}">45</span>
+                            </div>
+                        </th:block>
 
-                </div>
-                <div class="mx-auto pb-2">
-                    <small class="text-muted" th:text="${#temporals.format(lotto.getDateTime,'yyyy-MM-dd HH:mm:ss')}">2023-02-03:00:00</small>
+                    </div>
+                    <div class="mx-auto pb-2">
+                        <small class="text-muted" th:text="${#temporals.format(lotto.getDateTime,'yyyy-MM-dd HH:mm:ss')}">2023-02-03:00:00</small>
+                    </div>
                 </div>
             </div>
-        </div>
+        </th:block>
     </div>
 </div>
 
