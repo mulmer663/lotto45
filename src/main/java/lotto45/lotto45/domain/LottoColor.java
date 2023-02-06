@@ -1,4 +1,4 @@
-package lotto45.lotto45.lottoNumber;
+package lotto45.lotto45.domain;
 
 public enum LottoColor {
     warning,

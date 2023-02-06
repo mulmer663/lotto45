@@ -1,14 +1,23 @@
-package lotto45.lotto45.lottoNumber;
+package lotto45.lotto45.service;
+
+import lotto45.lotto45.domain.Lotto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LottoNumberServiceImp implements LottoNumberService{
 
+    private final LottoNumberArrayList lottoNumberArrayList = new LottoNumberArrayList();
+
+    public LottoNumberArrayList getLottoNumberArrayList() {
+        return lottoNumberArrayList;
+    }
 
     @Override
-    public Lotto create(LottoNumberArrayList lottoNumberArrayList) {
-        lottoNumberArrayList.shuffle();
-        List<Integer> tempNumber = lottoNumberArrayList.sixLottoNum();
+    public Lotto create() {
+        this.lottoNumberArrayList.shuffle();
+        List<Integer> tempNumber = this.lottoNumberArrayList.sixLottoNum();
         return new Lotto(tempNumber.get(0),tempNumber.get(1),tempNumber.get(2),tempNumber.get(3),tempNumber.get(4),tempNumber.get(5));
     }
 

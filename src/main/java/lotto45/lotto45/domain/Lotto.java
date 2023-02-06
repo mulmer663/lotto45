@@ -1,6 +1,5 @@
-package lotto45.lotto45.lottoNumber;
+package lotto45.lotto45.domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Lotto {

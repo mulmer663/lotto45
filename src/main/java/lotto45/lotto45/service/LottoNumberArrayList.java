@@ -1,4 +1,4 @@
-package lotto45.lotto45.lottoNumber;
+package lotto45.lotto45.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
