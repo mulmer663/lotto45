@@ -1,19 +1,25 @@
-package lotto45.lotto45.domain;
+package lotto45.domain;
 
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+@Entity
 @Getter
-@Setter
 public class Lotto {
 
-    private TreeSet<Integer> lottoNumber = new TreeSet<>();
-
+    @Id
+    @Setter
     private long id;
+    @ElementCollection
+    private NavigableSet<Integer> lottoNumber = new TreeSet<>();
+    @ElementCollection
     private Map<Integer, LottoColor> lottoColorMap;
     private LocalDateTime dateTime;
     private int rounds;

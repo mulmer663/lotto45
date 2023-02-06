@@ -1,0 +1,3 @@
+jdbc:h2:~/lotto45
+lotto
+123

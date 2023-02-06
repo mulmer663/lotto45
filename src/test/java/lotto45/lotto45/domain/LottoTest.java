@@ -1,5 +1,6 @@
 package lotto45.lotto45.domain;
 
+import lotto45.domain.Lotto;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -7,8 +8,7 @@ import java.time.temporal.ChronoUnit;
 
 class LottoTest {
 
-    LottoNumberArrayList lottoNumberArrayList = new LottoNumberArrayList();
-    Lotto lotto = new Lotto(lottoNumberArrayList.sixLottoNum());
+    Lotto lotto = new Lotto();
 
     @Test
     public void 회차테스트() throws Exception {

@@ -1,9 +1,8 @@
-package lotto45.lotto45.service;
+package lotto45.service;
 
-import lotto45.lotto45.domain.Lotto;
+import lotto45.domain.Lotto;
 
 import java.util.List;
-import java.util.Queue;
 
 public interface LottoNumberService {
 

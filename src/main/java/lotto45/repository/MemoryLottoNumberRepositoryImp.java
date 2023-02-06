@@ -1,8 +1,6 @@
-package lotto45.lotto45.repository;
+package lotto45.repository;
 
-import lotto45.lotto45.domain.Lotto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import lotto45.domain.Lotto;
 
 import java.util.*;
 
