@@ -12,17 +12,19 @@ public class LottoNumberArrayList {
 
     List<Integer> lottoNum45 = new ArrayList<>(45);
 
-    public LottoNumberArrayList(){
-        for(int i = 1 ; i<46 ;i++){
+    public LottoNumberArrayList() {
+        for (int i = 1; i < 46; i++) {
             lottoNum45.add(i);
         }
     }
 
-    public void shuffle(){
+    private void shuffle() {
         Collections.shuffle(lottoNum45);
     }
 
-    public List<Integer> sixLottoNum(){
+    public List<Integer> sixLottoNum() {
+        this.shuffle();
+
         List<Integer> lottoNumbers = new ArrayList<>(6);
         for (int i = 0; i < 6; i++) {
             lottoNumbers.add(lottoNum45.get(i));

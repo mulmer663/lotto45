@@ -20,7 +20,7 @@ public class LottoNumberController {
     @GetMapping("/lotto45")
     public String newLottoNumber(Model model){
         Lotto lotto = lottoNumberService.create();
-        model.addAttribute("lotto",lotto);
+        model.addAttribute("lotto", lotto);
         return "lotto45main";
     }
 
