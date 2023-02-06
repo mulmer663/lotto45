@@ -1,7 +1,6 @@
 package lotto45.lotto45.service;
 
 import lotto45.lotto45.domain.Lotto;
-import lotto45.lotto45.domain.LottoNumberArrayList;
 import lotto45.lotto45.repository.LottoNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +19,7 @@ public class LottoNumberServiceImp implements LottoNumberService {
 
     @Override
     public Lotto create() {
-        LottoNumberArrayList lottoNumberArrayList = new LottoNumberArrayList();
-        List<Integer> tempNumber = lottoNumberArrayList.sixLottoNum();
-        Lotto lotto = new Lotto(tempNumber);
+        Lotto lotto = new Lotto();
         lottoNumberRepository.save(lotto);
         return lotto;
     }

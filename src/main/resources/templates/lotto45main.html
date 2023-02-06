@@ -25,7 +25,7 @@
         </div>
         <div class="card-body mx-auto pb-1 d-flex">
 
-            <th:block th:each="lottoNum : ${lotto.lottoNumArr}">
+            <th:block th:each="lottoNum : ${lotto.lottoNumber}">
                 <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
                      th:attrappend="class=| bg-${lotto.lottoColorMap.get(lottoNum)}|"
                      style="width: 2.5rem; height: 2.5rem;">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="card-body mx-auto pb-1 d-flex">
 
-                        <th:block th:each="lottoNum : ${lottoHistory.lottoNumArr}">
+                        <th:block th:each="lottoNum : ${lottoHistory.lottoNumber}">
                             <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
                                  th:attrappend="class=| bg-${lottoHistory.lottoColorMap.get(lottoNum)}|"
                                  style="width: 2.5rem; height: 2.5rem;">

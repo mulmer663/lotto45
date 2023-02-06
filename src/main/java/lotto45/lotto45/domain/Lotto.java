@@ -5,30 +5,31 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 @Setter
 public class Lotto {
 
+    private TreeSet<Integer> lottoNumber = new TreeSet<>();
+
     private long id;
     private Map<Integer, LottoColor> lottoColorMap;
-    private List<Integer> lottoNumArr;
     private LocalDateTime dateTime;
     private int rounds;
 
-    public Lotto(List<Integer> lottoNumArr) {
-        this.lottoNumArr = lottoNumArr;
+    public Lotto() {
+        while (lottoNumber.size() < 6) {
+            lottoNumber.add((int)(Math.random()*45)+1);
+        }
         this.lottoColorMap = new HashMap<>();
         this.dateTime = LocalDateTime.now();
 
-        if (this.lottoNumArr.size() != 6) {
+        if (this.lottoNumber.size() != 6) {
             throw new RuntimeException("로또 숫자는 6개 입니다.");
         }
 
-        for (int lottoNum : this.lottoNumArr) {
+        for (int lottoNum : this.lottoNumber) {
 
             if (lottoNum <= 10) {
                 this.lottoColorMap.put(lottoNum, LottoColor.warning);
