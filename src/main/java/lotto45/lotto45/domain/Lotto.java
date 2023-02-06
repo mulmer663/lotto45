@@ -1,4 +1,4 @@
-package lotto45.domain;
+package lotto45.lotto45.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-@Entity
+//@Entity
 @Getter
 public class Lotto {
 

@@ -1,6 +1,6 @@
-package lotto45.repository;
+package lotto45.lotto45.repository;
 
-import lotto45.domain.Lotto;
+import lotto45.lotto45.domain.Lotto;
 
 import java.util.*;
 

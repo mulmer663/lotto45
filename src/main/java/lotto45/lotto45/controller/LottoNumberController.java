@@ -1,8 +1,8 @@
-package lotto45.controller;
+package lotto45.lotto45.controller;
 
 import lombok.RequiredArgsConstructor;
-import lotto45.domain.Lotto;
-import lotto45.service.LottoNumberService;
+import lotto45.lotto45.domain.Lotto;
+import lotto45.lotto45.service.LottoNumberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
