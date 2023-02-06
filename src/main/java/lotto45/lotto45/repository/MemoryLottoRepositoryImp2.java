@@ -9,7 +9,7 @@ import java.util.*;
 public class MemoryLottoRepositoryImp2 implements LottoNumberRepository {
 
     private static final Map<Long, Lotto> store = new HashMap<>();
-    private static long sequence = 0L;
+    private static long sequence = 1000001L;
     private static final Queue<Lotto> lottoQueue = new LinkedList<>();
 
     @Override

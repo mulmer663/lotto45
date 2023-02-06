@@ -21,7 +21,7 @@
 
     <div class="card text-center my-3">
         <div class="card-header py-2">
-            <strong>로또번호생성 <small class="text-muted" th:text="'ID.'+${lotto.id}">#22334242</small></strong>
+            <strong>로또번호생성 <small class="text-muted" th:text="|ID. ${lotto.id} / ${lotto.rounds}회|">#22334242</small></strong>
         </div>
         <div class="card-body mx-auto pb-1 d-flex">
 
@@ -47,7 +47,7 @@
             <div class="col-md-6">
                 <div class="card text-center my-3">
                     <div class="card-header py-2">
-                        <strong>로또번호생성 <small class="text-muted" th:text="'ID.'+${lottoHistory.id}">#22334242</small></strong>
+                        <strong>로또번호생성 <small class="text-muted" th:text="|ID. ${lottoHistory.id} / ${lottoHistory.rounds}회|">#22334242</small></strong>
                     </div>
                     <div class="card-body mx-auto pb-1 d-flex">
 
