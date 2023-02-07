@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -53,6 +54,26 @@ public class LottoWinningController {
         Lotto lotto = new Lotto();
         rounds = lotto.getRounds() - 1;
 
+        objectMapper.registerModule(new JavaTimeModule());
+        RestTemplate restTemplate = new RestTemplate();
+
+        String messageBody = restTemplate.getForObject
+                ("https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo={rounds}",
+                        String.class,
+                        rounds);
+        LottoWinningInfo winInfo = objectMapper.readValue(messageBody, LottoWinningInfo.class);
+        winInfo.makeColorList();
+        log.info("winInfo = {}", winInfo);
+
+        model.addAttribute("winInfo", winInfo);
+        model.addAttribute("rounds", rounds);
+        return "lottoWinningInfo";
+    }
+
+    @PostMapping("/winningInfo")
+    public String getLottoWinningInfo(Integer rounds, Model model) throws IOException {
+
+        log.info("rounds = {}", rounds);
         objectMapper.registerModule(new JavaTimeModule());
         RestTemplate restTemplate = new RestTemplate();
 
