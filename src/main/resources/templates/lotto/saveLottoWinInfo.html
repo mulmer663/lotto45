@@ -15,11 +15,11 @@
         <h2>모든 당첨 정보 저장</h2>
     </div>
 
-    <form th:action method="post">
+    <form th:action="@{/save-lotto_win_info}" method="post">
 
         <div>
-            <label th:for="rounds">아래의 회차까지의 모든 당첨 정보를 저장합니다.</label>
-            <input type="text" th:field="${rounds}" class="form-control" th:placeholder="${rounds}">
+            <label for="rounds">아래의 회차까지의 모든 당첨 정보를 저장합니다.</label>
+            <input type="text" id="rounds" name="rounds" class="form-control" th:placeholder="|${rounds}회가 현재 당첨회차입니다.|">
         </div>
 
         <hr class="my-4">

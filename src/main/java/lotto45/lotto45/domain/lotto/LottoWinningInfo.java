@@ -2,6 +2,7 @@ package lotto45.lotto45.domain.lotto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
