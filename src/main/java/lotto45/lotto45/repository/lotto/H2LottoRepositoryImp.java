@@ -16,13 +16,13 @@ public class H2LottoRepositoryImp implements LottoNumberRepository {
     @PersistenceContext
     private EntityManager em;
     private static final Queue<Lotto> lottoQueue = new LinkedList<>();
-    private static int lottoCount = 1;
-    private static final int MAX_COUNT = 100;
-
+    private static final int MAX_COUNT = 50;
 
     @Override
     @Transactional
     public void save(Lotto lotto) {
+
+        int lottoCount = this.findAll().size();
 
         if (lottoQueue.size() < 8) {
             lottoQueue.add(lotto);
@@ -31,7 +31,7 @@ public class H2LottoRepositoryImp implements LottoNumberRepository {
             lottoQueue.add(lotto);
         }
 
-        if (lottoCount++ <= MAX_COUNT) {
+        if (lottoCount++ < MAX_COUNT) {
             em.persist(lotto);
         } else {
             Lotto deletedLotto = em.createQuery("SELECT l FROM Lotto l ORDER BY l.id", Lotto.class)

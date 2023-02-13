@@ -12,9 +12,9 @@ import java.util.*;
 @Getter
 public class Lotto {
 
+    @Setter
     @Id
     @GeneratedValue
-    @Setter
     private long id;
     private int num1;
     private int num2;
