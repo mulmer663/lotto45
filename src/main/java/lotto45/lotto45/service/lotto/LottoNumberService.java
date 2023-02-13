@@ -1,6 +1,6 @@
-package lotto45.lotto45.service;
+package lotto45.lotto45.service.lotto;
 
-import lotto45.lotto45.domain.Lotto;
+import lotto45.lotto45.domain.lotto.Lotto;
 
 import java.util.List;
 

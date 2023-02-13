@@ -1,13 +1,9 @@
-package lotto45.lotto45.domain;
+package lotto45.lotto45.domain.lotto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -20,21 +16,44 @@ public class Lotto {
     @GeneratedValue
     @Setter
     private long id;
-    @ElementCollection
-    private List<Integer> lottoNumber = new ArrayList<>();
-    @ElementCollection
-    private Map<Integer, LottoColor> lottoColorMap;
+    private int num1;
+    private int num2;
+    private int num3;
+    private int num4;
+    private int num5;
+    private int num6;
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
     private int rounds;
+    @Transient
+    private Map<Integer, LottoColor> lottoColorMap;
+    @Transient
+    private List<Integer> lottoNumber = new ArrayList<>();
 
     public Lotto() {
         NavigableSet<Integer> lottoTreeSet = new TreeSet<>();
+        Random random = new Random();
 
         while (lottoTreeSet.size() < 6) {
-            lottoTreeSet.add((int)(Math.random()*45)+1);
+            int randomNum = random.nextInt(45) + 1;
+            lottoTreeSet.add(randomNum);
         }
 
         this.lottoNumber.addAll(lottoTreeSet);
+
+        for (int i = 0; i < this.lottoNumber.size(); i++) {
+            switch (i) {
+                case 0 -> num1 = lottoNumber.get(i);
+                case 1 -> num2 = lottoNumber.get(i);
+                case 2 -> num3 = lottoNumber.get(i);
+                case 3 -> num4 = lottoNumber.get(i);
+                case 4 -> num5 = lottoNumber.get(i);
+                case 5 -> num6 = lottoNumber.get(i);
+                default -> {
+                }
+            }
+        }
+
         this.lottoColorMap = new HashMap<>();
         this.dateTime = LocalDateTime.now();
 
@@ -55,6 +74,7 @@ public class Lotto {
             } else {
                 this.lottoColorMap.put(lottoNum, LottoColor.success);
             }
+
         }
 
         this.rounds = this.findRounds();

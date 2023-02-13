@@ -1,5 +1,6 @@
 package lotto45.lotto45.domain;
 
+import lotto45.lotto45.domain.lotto.Lotto;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;

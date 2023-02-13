@@ -1,12 +1,10 @@
-package lotto45.lotto45.controller;
+package lotto45.lotto45.controller.lotto;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
-import lotto45.lotto45.domain.Lotto;
-import lotto45.lotto45.domain.LottoWinningInfo;
-import org.springframework.http.ResponseEntity;
+import lotto45.lotto45.domain.lotto.Lotto;
+import lotto45.lotto45.domain.lotto.LottoWinningInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 
 @Controller
@@ -67,7 +64,7 @@ public class LottoWinningController {
 
         model.addAttribute("winInfo", winInfo);
         model.addAttribute("rounds", rounds);
-        return "lottoWinningInfo";
+        return "lotto/lottoWinningInfo";
     }
 
     @PostMapping("/winningInfo")
@@ -86,6 +83,6 @@ public class LottoWinningController {
         log.info("winInfo = {}", winInfo);
 
         model.addAttribute("winInfo", winInfo);
-        return "lottoWinningInfo";
+        return "lotto/lottoWinningInfo";
     }
 }

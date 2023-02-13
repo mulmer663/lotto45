@@ -1,6 +1,6 @@
-package lotto45.lotto45.repository;
+package lotto45.lotto45.repository.lotto;
 
-import lotto45.lotto45.domain.Lotto;
+import lotto45.lotto45.domain.lotto.Lotto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -17,6 +17,7 @@ public class H2LottoRepositoryImp implements LottoNumberRepository {
     private EntityManager em;
     private static final Queue<Lotto> lottoQueue = new LinkedList<>();
     private static int lottoCount = 1;
+    private static final int MAX_COUNT = 100;
 
 
     @Override
@@ -30,7 +31,7 @@ public class H2LottoRepositoryImp implements LottoNumberRepository {
             lottoQueue.add(lotto);
         }
 
-        if (lottoCount++ <= 50) {
+        if (lottoCount++ <= MAX_COUNT) {
             em.persist(lotto);
         } else {
             Lotto deletedLotto = em.createQuery("SELECT l FROM Lotto l ORDER BY l.id", Lotto.class)

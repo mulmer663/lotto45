@@ -1,30 +1,35 @@
-package lotto45.lotto45.domain;
+package lotto45.lotto45.domain.lotto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class LottoWinningInfo {
 
-    private Long totSellamnt;
-    private String returnValue;
-    private LocalDate drwNoDate;
-    private Long firstWinamnt;
-    private int drwtNo6;
-    private int drwtNo4;
-    private int firstPrzwnerCo;
-    private int drwtNo5;
-    private int bnusNo;
-    private Long firstAccumamnt;
+    @Id
     private int drwNo;
+    private String returnValue;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDate drwNoDate;
+    private int drwtNo1;
     private int drwtNo2;
     private int drwtNo3;
-    private int drwtNo1;
+    private int drwtNo4;
+    private int drwtNo5;
+    private int drwtNo6;
+    private int bnusNo;
+    private Long totSellamnt;
+    private Long firstAccumamnt;
+    private int firstPrzwnerCo;
+    private Long firstWinamnt;
+    @Transient
     private List<LottoColor> colorList;
 
     public void makeColorList() {

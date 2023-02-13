@@ -1,7 +1,7 @@
-package lotto45.lotto45.service;
+package lotto45.lotto45.service.lotto;
 
-import lotto45.lotto45.domain.Lotto;
-import lotto45.lotto45.repository.LottoNumberRepository;
+import lotto45.lotto45.domain.lotto.Lotto;
+import lotto45.lotto45.repository.lotto.LottoNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
