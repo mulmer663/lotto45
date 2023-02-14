@@ -26,29 +26,45 @@
 
     <form action="checkWinStt.html" th:action th:object="${form}" method="post" class="row">
 
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <br>
+            <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">글로벌 오류 메세지</p>
+        </div>
         <div class="col">
             <label th:for="num1"></label>
-            <input type="text" th:field="*{num1}" class="form-control form-control-sm text-center">
+            <input type="text" th:field="*{num1}" class="form-control form-control-sm text-center"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{num1}"></div>
         </div>
         <div class="col">
             <label th:for="num2"></label>
-            <input type="text" th:field="*{num2}" class="form-control form-control-sm text-center">
+            <input type="text" th:field="*{num2}" class="form-control form-control-sm text-center"
+            th:errorclass="field-error">
+            <div class="field-error" th:errors="*{num2}"></div>
         </div>
         <div class="col">
             <label th:for="num3"></label>
-            <input type="text" th:field="*{num3}" class="form-control form-control-sm text-center">
+            <input type="text" th:field="*{num3}" class="form-control form-control-sm text-center"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{num3}"></div>
         </div>
         <div class="col">
             <label th:for="num4"></label>
-            <input type="text" th:field="*{num4}" class="form-control form-control-sm text-center">
+            <input type="text" th:field="*{num4}" class="form-control form-control-sm text-center"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{num4}"></div>
         </div>
         <div class="col">
             <label th:for="num5"></label>
-            <input type="text" th:field="*{num5}" class="form-control form-control-sm text-center">
+            <input type="text" th:field="*{num5}" class="form-control form-control-sm text-center"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{num5}"></div>
         </div>
         <div class="col">
             <label th:for="num6"></label>
-            <input type="text" th:field="*{num6}" class="form-control form-control-sm text-center">
+            <input type="text" th:field="*{num6}" class="form-control form-control-sm text-center"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{num6}"></div>
         </div>
         <br><br><br><br>
         <div class="row">
