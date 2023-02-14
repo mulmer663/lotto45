@@ -29,9 +29,9 @@
         <div th:if="${noWinStt ne null}" th:text="${noWinStt}" class="text-bg-warning p-3">
 
         </div>
-        <table class="table" th:if="${winSttS ne null}">
+        <table class="table" th:if="${winSttS ne null}" th:each="winStt :${winSttS}">
             <thead>
-            <tr th:each="winStt :${winSttS}">
+            <tr>
                 <th>당첨 회차</th>
                 <th>순위</th>
                 <th>당첨 번호</th>
@@ -40,7 +40,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="winStt : ${winSttS}">
+            <tr>
                 <td th:text="|${winStt.rounds}회차|">당첨 회차</td>
                 <td th:text="|${winStt.rank}위|">순위</td>
                 <td th:text="${winStt.lottoNums}">당첨 번호</td>

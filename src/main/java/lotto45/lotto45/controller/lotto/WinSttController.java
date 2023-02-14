@@ -60,6 +60,7 @@ public class WinSttController {
         }
 
 
+        // * 성공시 로직 수행
         List<Integer> lottoNums = new ArrayList<>();
         lottoNums.add(form.getNum1());
         lottoNums.add(form.getNum2());
