@@ -25,12 +25,15 @@ public class H2LottoWinInfoRepositoryImp implements ILottoWinInfoRepository {
     }
 
     @Override
-    public List<Lotto> findByRounds(int rounds) {
-        return null;
+    public List<LottoWinningInfo> findByRounds(int rounds) {
+        return em.createQuery("SELECT l FROM LottoWinningInfo l WHERE l.drwNo = :drwNo", LottoWinningInfo.class)
+                .setParameter("drwNo", rounds)
+                .getResultList();
     }
 
     @Override
-    public List<Lotto> findAll() {
-        return null;
+    public List<LottoWinningInfo> findAll() {
+        return em.createQuery("SELECT l FROM LottoWinningInfo l", LottoWinningInfo.class)
+                .getResultList();
     }
 }

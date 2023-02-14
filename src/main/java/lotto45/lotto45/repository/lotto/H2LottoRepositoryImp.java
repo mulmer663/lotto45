@@ -34,7 +34,7 @@ public class H2LottoRepositoryImp implements LottoNumberRepository {
         if (lottoCount++ < MAX_COUNT) {
             em.persist(lotto);
         } else {
-            Lotto deletedLotto = em.createQuery("SELECT l FROM Lotto l ORDER BY l.id", Lotto.class)
+            Lotto deletedLotto = em.createQuery("SELECT l FROM Lotto l ORDER BY l.dateTime", Lotto.class)
                     .setMaxResults(1)
                     .getSingleResult();
             em.remove(deletedLotto);

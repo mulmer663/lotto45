@@ -8,6 +8,6 @@ import java.util.List;
 public interface ILottoWinInfoRepository {
 
     void saveAll(List<LottoWinningInfo> winningInfos);
-    List<Lotto> findByRounds(int rounds);
-    List<Lotto> findAll();
+    List<LottoWinningInfo> findByRounds(int rounds);
+    List<LottoWinningInfo> findAll();
 }
