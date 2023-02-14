@@ -4,6 +4,7 @@ import lotto45.lotto45.domain.member.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -26,10 +27,20 @@ public class MemberRepository {
                 .getSingleResult();
     }
 
+    @Transactional
     public Optional<Member> findByLoginId(String loginId) {
-        return Optional.ofNullable(em.createQuery("SELECT m FROM Member m WHERE m.loginId = :loginId", Member.class)
-                .setParameter("loginId", loginId)
-                .getSingleResult());
+
+        Optional<Member> findMember;
+
+        try {
+            findMember = Optional.ofNullable(em.createQuery("SELECT m FROM Member m WHERE m.loginId = :loginId", Member.class)
+                    .setParameter("loginId", loginId)
+                    .getSingleResult());
+        } catch (NoResultException e) {
+            findMember = Optional.empty();
+        }
+
+        return findMember;
     }
 
     public List<Member> findAll() {
