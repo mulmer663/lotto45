@@ -2,6 +2,7 @@ package lotto45.lotto45.domain.lotto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class LottoWinningInfo {
