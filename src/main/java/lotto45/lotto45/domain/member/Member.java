@@ -2,11 +2,13 @@ package lotto45.lotto45.domain.member;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Getter
@@ -24,6 +26,8 @@ public class Member {
     @NotEmpty
     private String name;
     @NotEmpty
+    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\w).{8,}$",
+            message = "최소 8자, 숫자, 영문, 특수 문자가 모두 들어가야 합니다.")
     private String password;
 
     @Override
