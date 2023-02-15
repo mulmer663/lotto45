@@ -33,7 +33,6 @@ public class H2LottoWinInfoRepositoryImp implements ILottoWinInfoRepository {
         try {
             lottoWinningInfo = Optional.ofNullable(
                     em.createQuery("SELECT l FROM LottoWinningInfo l ORDER BY l.drwNo DESC", LottoWinningInfo.class)
-                            .setFirstResult(0)
                             .setMaxResults(1)
                             .getSingleResult());
         } catch (NoResultException e) {

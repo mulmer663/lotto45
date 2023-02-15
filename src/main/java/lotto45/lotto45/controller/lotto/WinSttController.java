@@ -32,7 +32,7 @@ public class WinSttController {
      */
     @GetMapping("/WinSttCheck")
     public String saveWinSttForm(@ModelAttribute("form") NumbersSaveForm form) {
-        return "winSttForm";
+        return "lotto/winSttForm";
     }
 
     @PostMapping("/WinSttCheck")

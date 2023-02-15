@@ -43,7 +43,6 @@ public class SearchAPIController {
      * <p>5. String으로 받아 Json 형식의 문자열로 기록하고 해당 문자열을 objectMapper를 사용해서 객체로 변환</p>
      * @param rounds 회차 정보
      * @return 해당 회차 당첨 정보를 가진 모듈을 View에 전달
-     * @throws IOException
      */
     @GetMapping("/winningInfo")
     public String lottoWinningInfo(Integer rounds, Model model) throws IOException {
