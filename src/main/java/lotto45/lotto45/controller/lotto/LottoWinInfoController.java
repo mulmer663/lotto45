@@ -47,13 +47,15 @@ public class LottoWinInfoController {
         List<LottoWinningInfo> winningInfos = new ArrayList<>();
         objectMapper.registerModule(new JavaTimeModule());
         RestTemplate restTemplate = new RestTemplate();
+        int savedRounds = this.lottoWinInfoService.getRounds();
 
-        for (int currentRounds = 1; currentRounds <= rounds; currentRounds++) {
+        for (int currentRounds = savedRounds + 1; currentRounds <= rounds; currentRounds++) {
             String messageBody = restTemplate.getForObject
                     (LOTTO_API_URL, String.class, currentRounds);
             LottoWinningInfo winInfo = objectMapper.readValue(messageBody, LottoWinningInfo.class);
             winningInfos.add(winInfo);
         }
+
         this.lottoWinInfoService.save(winningInfos);
 
 //        log.info("winInfo = {}", winInfo);

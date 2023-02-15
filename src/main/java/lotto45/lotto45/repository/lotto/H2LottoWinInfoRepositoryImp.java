@@ -5,6 +5,7 @@ import lotto45.lotto45.domain.lotto.LottoWinningInfo;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -27,8 +28,19 @@ public class H2LottoWinInfoRepositoryImp implements ILottoWinInfoRepository {
 
     @Override
     public Optional<LottoWinningInfo> findByLatestRounds() {
-        return Optional.ofNullable(em.createQuery("SELECT l FROM LottoWinningInfo l ORDER BY l.drwNo DESC ", LottoWinningInfo.class)
-                .getSingleResult());
+        Optional<LottoWinningInfo> lottoWinningInfo;
+
+        try {
+            lottoWinningInfo = Optional.ofNullable(
+                    em.createQuery("SELECT l FROM LottoWinningInfo l ORDER BY l.drwNo DESC", LottoWinningInfo.class)
+                            .setFirstResult(0)
+                            .setMaxResults(1)
+                            .getSingleResult());
+        } catch (NoResultException e) {
+            lottoWinningInfo = Optional.empty();
+        }
+
+        return lottoWinningInfo;
     }
 
     @Override
