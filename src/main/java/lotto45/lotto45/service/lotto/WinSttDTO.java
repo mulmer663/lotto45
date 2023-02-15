@@ -14,7 +14,7 @@ import java.util.List;
  * <p>4. 만약 1등이면 당첨 금액을 저장하는 필드</p>
  */
 @Data
-public class WinSttInfoDTO {
+public class WinSttDTO {
 
     private int rounds;
     private List<Integer> lottoNums = new ArrayList<>();

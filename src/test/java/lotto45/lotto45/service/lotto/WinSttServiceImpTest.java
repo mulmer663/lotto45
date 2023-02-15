@@ -30,16 +30,16 @@ class WinSttServiceImpTest {
         lottoNums.add(33);
 
         // * when
-        List<WinSttInfoDTO> winSttInfoDTOS = winSttService.calculateSttInfo(lottoNums);
+        List<WinSttDTO> winSttDTOS = winSttService.calculateSttInfo(lottoNums);
 
         // * then
-        assertThat(winSttInfoDTOS.size()).isEqualTo(1);
-        for (WinSttInfoDTO winSttInfoDTO : winSttInfoDTOS) {
-            assertThat(winSttInfoDTO.getRank()).isEqualTo(2);
-            assertThat(winSttInfoDTO.getBonusNum()).isEqualTo(33);
-            assertThat(winSttInfoDTO.getRounds()).isEqualTo(1054);
-            assertThat(winSttInfoDTO.getLottoNums().size()).isEqualTo(5);
-            System.out.println("winSttInfoDTO = " + winSttInfoDTO);
+        assertThat(winSttDTOS.size()).isEqualTo(1);
+        for (WinSttDTO winSttDTO : winSttDTOS) {
+            assertThat(winSttDTO.getRank()).isEqualTo(2);
+            assertThat(winSttDTO.getBonusNum()).isEqualTo(33);
+            assertThat(winSttDTO.getRounds()).isEqualTo(1054);
+            assertThat(winSttDTO.getLottoNums().size()).isEqualTo(5);
+            System.out.println("winSttInfoDTO = " + winSttDTO);
         }
 
     }

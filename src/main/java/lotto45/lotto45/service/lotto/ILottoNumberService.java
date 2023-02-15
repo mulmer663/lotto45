@@ -4,7 +4,7 @@ import lotto45.lotto45.domain.lotto.Lotto;
 
 import java.util.List;
 
-public interface LottoNumberService {
+public interface ILottoNumberService {
 
     Lotto create();
     List<Lotto> findByRounds(int rounds);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class LottoNumberServiceImp implements LottoNumberService {
+public class LottoNumberServiceImp implements ILottoNumberService {
 
     private final LottoNumberRepository lottoNumberRepository;
 

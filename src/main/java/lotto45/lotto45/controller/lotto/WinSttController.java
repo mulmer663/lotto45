@@ -3,7 +3,7 @@ package lotto45.lotto45.controller.lotto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.service.lotto.IWinSttService;
-import lotto45.lotto45.service.lotto.WinSttInfoDTO;
+import lotto45.lotto45.service.lotto.WinSttDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,12 +31,12 @@ public class WinSttController {
      * <p>따라서 로그인 후 해당 컨트롤러에 접근할 수 있고 1~3위 로직은 따로 서비스로 구현</p>
      */
     @GetMapping("/WinSttCheck")
-    public String saveWinSttForm(@ModelAttribute("form") LottoNumsSaveForm form) {
+    public String saveWinSttForm(@ModelAttribute("form") NumbersSaveForm form) {
         return "lotto/saveWinSttForm";
     }
 
     @PostMapping("/WinSttCheck")
-    public String checkLottoNumber(@ModelAttribute("form") @Validated LottoNumsSaveForm form,
+    public String checkLottoNumber(@ModelAttribute("form") @Validated NumbersSaveForm form,
                                    BindingResult bindingResult,
                                    Model model) {
 
@@ -69,12 +69,12 @@ public class WinSttController {
         lottoNums.add(form.getNum5());
         lottoNums.add(form.getNum6());
 
-        List<WinSttInfoDTO> winSttInfoDTOS = this.winSttService.calculateSttInfo(lottoNums);
+        List<WinSttDTO> winSttDTOS = this.winSttService.calculateSttInfo(lottoNums);
 
-        if (winSttInfoDTOS.size() == 0) {
+        if (winSttDTOS.size() == 0) {
             model.addAttribute("noWinStt", "당첨 통계가 없습니다.");
         } else {
-            model.addAttribute("winSttS", winSttInfoDTOS);
+            model.addAttribute("winSttS", winSttDTOS);
         }
 
         return "lotto/checkWinStt";

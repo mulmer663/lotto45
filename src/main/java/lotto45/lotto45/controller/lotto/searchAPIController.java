@@ -17,7 +17,7 @@ import java.io.IOException;
 
 @Controller
 @Slf4j
-public class LottoWinningController {
+public class searchAPIController {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 

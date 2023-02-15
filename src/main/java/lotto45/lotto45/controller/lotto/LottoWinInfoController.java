@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-public class LottoWinningSaveController {
+public class LottoWinInfoController {
 
     private final ILottoWinInfoRepository lottoWinInfoRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
