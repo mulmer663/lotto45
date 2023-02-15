@@ -5,7 +5,7 @@ import lotto45.lotto45.domain.lotto.Lotto;
 import java.util.*;
 
 //@Repository
-public class MemoryLottoNumberRepositoryImp2 implements LottoNumberRepository {
+public class MemoryILottoNumberRepositoryImp2 implements ILottoNumberRepository {
 
     private static final Map<Long, Lotto> store = new HashMap<>();
     private static long sequence = 1000001L;

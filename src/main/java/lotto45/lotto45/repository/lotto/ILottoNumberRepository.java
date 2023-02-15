@@ -5,7 +5,7 @@ import lotto45.lotto45.domain.lotto.Lotto;
 import java.util.List;
 import java.util.Queue;
 
-public interface LottoNumberRepository {
+public interface ILottoNumberRepository {
     void save(Lotto lotto);
     List<Lotto> findByRounds(int rounds);
     Queue<Lotto> lastLottoNumber8();

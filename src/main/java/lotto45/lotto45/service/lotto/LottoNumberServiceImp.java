@@ -1,7 +1,7 @@
 package lotto45.lotto45.service.lotto;
 
 import lotto45.lotto45.domain.lotto.Lotto;
-import lotto45.lotto45.repository.lotto.LottoNumberRepository;
+import lotto45.lotto45.repository.lotto.ILottoNumberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,34 +10,34 @@ import java.util.*;
 @Service
 public class LottoNumberServiceImp implements ILottoNumberService {
 
-    private final LottoNumberRepository lottoNumberRepository;
+    private final ILottoNumberRepository ILottoNumberRepository;
 
     @Autowired
-    public LottoNumberServiceImp(LottoNumberRepository lottoNumberRepository) {
-        this.lottoNumberRepository = lottoNumberRepository;
+    public LottoNumberServiceImp(ILottoNumberRepository ILottoNumberRepository) {
+        this.ILottoNumberRepository = ILottoNumberRepository;
     }
 
     @Override
     public Lotto create() {
         Lotto lotto = new Lotto();
-        lottoNumberRepository.save(lotto);
+        ILottoNumberRepository.save(lotto);
         return lotto;
     }
 
     @Override
     public List<Lotto> findByRounds(int rounds) {
-        return lottoNumberRepository.findByRounds(rounds);
+        return ILottoNumberRepository.findByRounds(rounds);
     }
 
     @Override
     public List<Lotto> findAll() {
-        return lottoNumberRepository.findAll();
+        return ILottoNumberRepository.findAll();
     }
 
     @Override
     public List<Lotto> lastLottoNumber8() {
         List<Lotto> lottoList = new ArrayList<Lotto>();
-        Queue<Lotto> lottoQueue = lottoNumberRepository.lastLottoNumber8();
+        Queue<Lotto> lottoQueue = ILottoNumberRepository.lastLottoNumber8();
 
         for (Lotto lotto : lottoQueue) {
             lottoList.add(0, lotto);

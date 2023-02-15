@@ -4,9 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lotto45.lotto45.domain.lotto.Lotto;
 import lotto45.lotto45.domain.lotto.LottoWinningInfo;
-import lotto45.lotto45.repository.lotto.ILottoWinInfoRepository;
+import lotto45.lotto45.service.lotto.ILottoWinInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,25 +21,24 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LottoWinInfoController {
 
-    private final ILottoWinInfoRepository lottoWinInfoRepository;
+    private final ILottoWinInfoService lottoWinInfoService;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private static final String LOTTO_API_URL = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo={rounds}";
 
     /**
-     * 단순히 현재 당첨 회차를 전달함
+     * DB에 저장된 가장 최신 회차 정보를 보여줌
      */
     @GetMapping("/save-lotto_win_info")
     public String lottoWinInfo(Model model) {
-        Lotto lotto = new Lotto();
-        Integer rounds = lotto.getRounds() - 1;
+
+        int rounds = this.lottoWinInfoService.getRounds();
         model.addAttribute("rounds", rounds);
 
-        return "/lotto/saveLottoWinInfo";
+        return "lotto/lottoWinInfoForm";
     }
 
     /**
-     * 버튼 누르면 회차 데이터 쭉 뽑아서 저장하는 형식으로
-     * 간단하니깐 바로 리포지토리와 연결
+     * 버튼 누르면 회차 데이터 쭉 뽑아서 겹치지 않는 부분만 저장하는 형식 --> 서비스와 연결
      */
     @PostMapping("/save-lotto_win_info")
     public String saveLottoWinInfo(Integer rounds) throws IOException {
@@ -56,7 +54,7 @@ public class LottoWinInfoController {
             LottoWinningInfo winInfo = objectMapper.readValue(messageBody, LottoWinningInfo.class);
             winningInfos.add(winInfo);
         }
-        this.lottoWinInfoRepository.saveAll(winningInfos);
+        this.lottoWinInfoService.save(winningInfos);
 
 //        log.info("winInfo = {}", winInfo);
         return "redirect:/";

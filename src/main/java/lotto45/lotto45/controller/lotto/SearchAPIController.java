@@ -17,7 +17,7 @@ import java.io.IOException;
 
 @Controller
 @Slf4j
-public class searchAPIController {
+public class SearchAPIController {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -64,7 +64,7 @@ public class searchAPIController {
 
         model.addAttribute("winInfo", winInfo);
         model.addAttribute("rounds", rounds);
-        return "lotto/lottoWinningInfo";
+        return "lotto/lottoWinInfo";
     }
 
     @PostMapping("/winningInfo")
@@ -83,6 +83,6 @@ public class searchAPIController {
         log.info("winInfo = {}", winInfo);
 
         model.addAttribute("winInfo", winInfo);
-        return "lotto/lottoWinningInfo";
+        return "lotto/lottoWinInfo";
     }
 }

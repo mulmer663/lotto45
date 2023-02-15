@@ -32,7 +32,7 @@ public class WinSttController {
      */
     @GetMapping("/WinSttCheck")
     public String saveWinSttForm(@ModelAttribute("form") NumbersSaveForm form) {
-        return "lotto/saveWinSttForm";
+        return "winSttForm";
     }
 
     @PostMapping("/WinSttCheck")
@@ -56,7 +56,7 @@ public class WinSttController {
         // # 실패시 다시 입력 폼으로
         if (bindingResult.hasErrors()) {
 //            log.info("errors = {}", bindingResult);
-            return "lotto/saveWinSttForm";
+            return "lotto/winSttForm";
         }
 
 
@@ -77,6 +77,6 @@ public class WinSttController {
             model.addAttribute("winSttS", winSttDTOS);
         }
 
-        return "lotto/checkWinStt";
+        return "lotto/winStt";
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class H2LottoWinInfoRepositoryImp implements ILottoWinInfoRepository {
@@ -25,10 +26,9 @@ public class H2LottoWinInfoRepositoryImp implements ILottoWinInfoRepository {
     }
 
     @Override
-    public List<LottoWinningInfo> findByRounds(int rounds) {
-        return em.createQuery("SELECT l FROM LottoWinningInfo l WHERE l.drwNo = :drwNo", LottoWinningInfo.class)
-                .setParameter("drwNo", rounds)
-                .getResultList();
+    public Optional<LottoWinningInfo> findByLatestRounds() {
+        return Optional.ofNullable(em.createQuery("SELECT l FROM LottoWinningInfo l ORDER BY l.drwNo DESC ", LottoWinningInfo.class)
+                .getSingleResult());
     }
 
     @Override

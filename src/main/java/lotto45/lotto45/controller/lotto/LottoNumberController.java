@@ -21,7 +21,7 @@ public class LottoNumberController {
         List<Lotto> last8Numbers = ILottoNumberService.lastLottoNumber8();
         model.addAttribute("lotto", lotto);
         model.addAttribute("last8Numbers",last8Numbers);
-        return "lotto/lotto45main";
+        return "lotto/lottoNumber";
     }
 
 }

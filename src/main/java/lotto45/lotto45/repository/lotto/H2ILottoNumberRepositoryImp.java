@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Queue;
 
 @Repository
-public class H2LottoNumberRepositoryImp implements LottoNumberRepository {
+public class H2ILottoNumberRepositoryImp implements ILottoNumberRepository {
 
     @PersistenceContext
     private EntityManager em;
