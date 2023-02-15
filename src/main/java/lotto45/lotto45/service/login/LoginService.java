@@ -24,5 +24,10 @@ public class LoginService {
                 .filter(m -> m.getPassword().equals(encryptedPassword))
                 .orElse(null);
     }
+
+    public Member getMember(String loginId) {
+        return memberRepository.findByLoginId(loginId)
+                .orElse(null);
+    }
 }
 

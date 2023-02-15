@@ -1,13 +1,13 @@
 package lotto45.lotto45.controller.member;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.domain.member.Member;
 import lotto45.lotto45.exception.SameLoginIdException;
 import lotto45.lotto45.service.member.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/members")
 public class MemberController {
@@ -46,6 +47,7 @@ public class MemberController {
         }
 
         if (bindingResult.hasErrors()) {
+            log.info("bindingResult = {}", bindingResult);
             return "members/addMemberForm";
         }
 

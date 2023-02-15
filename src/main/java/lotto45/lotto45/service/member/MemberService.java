@@ -7,7 +7,6 @@ import lotto45.lotto45.repository.member.MemberRepository;
 import lotto45.lotto45.service.Encryption;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
 @Service
