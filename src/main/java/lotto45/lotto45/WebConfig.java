@@ -37,6 +37,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginMasterSecondInterceptor())
                 .order(3)
                 .addPathPatterns("/save-lotto_win_info", "/masterHome", "/members", "/members/**")
-                .excludePathPatterns("/", "/css/**", "/*.ico", "/error" , "/members/add");
+                .excludePathPatterns("/", "/css/**", "/*.ico", "/error" , "/members/add" , "/members/edit/**");
     }
 }

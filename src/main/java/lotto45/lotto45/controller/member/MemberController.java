@@ -86,6 +86,7 @@ public class MemberController {
                 member.getName(), member.getPassword(), member.getPassword(), member.getEmail());
 
         model.addAttribute("member", memberDTO);
+        model.addAttribute("sessionData", "master");
         return "members/editMember";
     }
 
@@ -98,19 +99,17 @@ public class MemberController {
             bindingResult.addError(new FieldError("member", "password", form.getPassword(),
                     false, null, null, "비밀번호와 비밀번호 확인이 일치하지 않습니다."));
         }
-
         // 일단 이전 비밀번호 그대로 유지 가능하게 만들자.
 //        if (this.memberService.verifyPreviousPassword(memberId, form.getPassword())) {
 //            bindingResult.addError(new FieldError("member", "password", form.getPassword(),
 //                    false, null, null, "이전 비밀번호와 일치합니다!"));
 //        }
-
         if (bindingResult.hasErrors()) {
             log.info("bindingResult = {}", bindingResult);
             return "members/editMember";
         }
-        this.memberService.update(memberId, form);
 
+        this.memberService.update(memberId, form);
 
         return "redirect:/members";
     }
@@ -120,5 +119,36 @@ public class MemberController {
         this.memberService.remove(memberId);
 
         return "redirect:/members";
+    }
+
+    @GetMapping("/edit/{memberId}")
+    public String editMemberSelf(@PathVariable long memberId, Model model) {
+        Member member = this.memberService.findById(memberId);
+        MemberDTO memberDTO = new MemberDTO(member.getLoginId(),
+                member.getName(), member.getPassword(), member.getPassword(), member.getEmail());
+
+        model.addAttribute("member", memberDTO);
+        model.addAttribute("sessionData", "member");
+        return "members/editMember";
+    }
+
+    @PostMapping("/edit/{memberId}")
+    public String editMemberSelf(@PathVariable long memberId,
+                             @Validated @ModelAttribute("member") MemberDTO form,
+                             BindingResult bindingResult) {
+
+        if (!form.getPassword().equals(form.getPasswordVerify())) {
+            bindingResult.addError(new FieldError("member", "password", form.getPassword(),
+                    false, null, null, "비밀번호와 비밀번호 확인이 일치하지 않습니다."));
+        }
+
+        if (bindingResult.hasErrors()) {
+            log.info("bindingResult = {}", bindingResult);
+            return "members/editMember";
+        }
+
+        this.memberService.update(memberId, form);
+
+        return "redirect:/";
     }
 }
