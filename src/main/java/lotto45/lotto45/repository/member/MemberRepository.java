@@ -48,4 +48,9 @@ public class MemberRepository {
                 .getResultList();
     }
 
+    @Transactional
+    public void remove(long memberId) {
+        Member member = this.findById(memberId);
+        em.remove(member);
+    }
 }

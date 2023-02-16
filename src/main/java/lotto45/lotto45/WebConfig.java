@@ -26,6 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/", "/lotto45", "/save-lotto_win_info", "/masterLogin", "/masterHome",
+                        "/members", "/members/**",
                         "/members/add", "/login", "/logout",
                         "/css/**", "/*.ico", "/error");
 
@@ -35,7 +36,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(new LoginMasterSecondInterceptor())
                 .order(3)
-                .addPathPatterns("/save-lotto_win_info", "/masterHome", "/members")
-                .excludePathPatterns("/", "/css/**", "/*.ico", "/error");
+                .addPathPatterns("/save-lotto_win_info", "/masterHome", "/members", "/members/**")
+                .excludePathPatterns("/", "/css/**", "/*.ico", "/error" , "/members/add");
     }
 }

@@ -5,15 +5,19 @@ import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.domain.member.Member;
 import lotto45.lotto45.exception.SameLoginIdException;
 import lotto45.lotto45.service.member.MemberService;
+import lotto45.lotto45.service.member.MemberDTO;
+import lotto45.lotto45.web.SessionConst;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -24,33 +28,97 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/add")
-    String addForm(@ModelAttribute("member") Member member) {
+    String addForm(@ModelAttribute("member") MemberDTO member) {
         return "members/addMemberForm";
     }
 
     @PostMapping("/add")
-    public String save(@Valid @ModelAttribute Member member, BindingResult bindingResult) {
+    public String save(@Valid @ModelAttribute("member") MemberDTO form, BindingResult bindingResult, HttpServletRequest request) {
+
+        if (!form.getPassword().equals(form.getPasswordVerify())) {
+            bindingResult.addError(new FieldError("member", "password", form.getPassword(),
+                    false, null, null, "비밀번호와 비밀번호 확인이 일치하지 않습니다."));
+        }
+
+        Member member = new Member();
+        member.setLoginId(form.getLoginId());
+        member.setName(form.getName());
+        member.setPassword(form.getPassword());
+        member.setEmail(form.getEmail());
 
         try {
-            if (bindingResult.hasErrors()) {
-                // 해당 예외는 아니지만 아이디와 비번 검증 상황 동시에 보여주기 위해 던짐
-                throw new SameLoginIdException();
-            } else {
-                this.memberService.save(member);
-            }
-
+            this.memberService.check(member);
         } catch (SameLoginIdException e) {
 //            bindingResult.reject("notUniqueLoginId", new Object[]{member.getLoginId()},
 //                    "이미 존재하는 아이디 입니다.");
             bindingResult.addError(new FieldError("member", "loginId", member.getLoginId(),
                     false, null, null, "이미 존재하는 아이디 입니다."));
-        }
-
-        if (bindingResult.hasErrors()) {
-            log.info("bindingResult = {}", bindingResult);
             return "members/addMemberForm";
         }
 
+        if (bindingResult.hasErrors()) {
+//            log.info("bindingResult = {}", bindingResult);
+            return "members/addMemberForm";
+        }
+
+        this.memberService.save(member);
+
+        HttpSession session = request.getSession();
+        if (session.getAttribute(SessionConst.LOGIN_MASTER_2ND_AUTH) != null) {
+            return "redirect:/members";
+        }
+
         return "redirect:/";
+    }
+
+    @GetMapping
+    public String members(Model model) {
+        List<Member> members = memberService.findAll();
+        model.addAttribute("members", members);
+
+        return "members/members";
+    }
+
+    @GetMapping("/{memberId}")
+    public String memberEditForm(@PathVariable long memberId, Model model) {
+        Member member = this.memberService.findById(memberId);
+        MemberDTO memberDTO = new MemberDTO(member.getLoginId(),
+                member.getName(), member.getPassword(), member.getPassword(), member.getEmail());
+
+        model.addAttribute("member", memberDTO);
+        return "members/editMember";
+    }
+
+    @PostMapping("/{memberId}")
+    public String editMember(@PathVariable long memberId,
+                             @Validated @ModelAttribute("member") MemberDTO form,
+                             BindingResult bindingResult) {
+
+        if (!form.getPassword().equals(form.getPasswordVerify())) {
+            bindingResult.addError(new FieldError("member", "password", form.getPassword(),
+                    false, null, null, "비밀번호와 비밀번호 확인이 일치하지 않습니다."));
+        }
+
+        // 일단 이전 비밀번호 그대로 유지 가능하게 만들자.
+//        if (this.memberService.verifyPreviousPassword(memberId, form.getPassword())) {
+//            bindingResult.addError(new FieldError("member", "password", form.getPassword(),
+//                    false, null, null, "이전 비밀번호와 일치합니다!"));
+//        }
+
+        if (bindingResult.hasErrors()) {
+            log.info("bindingResult = {}", bindingResult);
+            return "members/editMember";
+        }
+        this.memberService.update(memberId, form);
+
+
+        return "redirect:/members";
+    }
+
+    @GetMapping("/{memberId}/delete")
+    public String deleteMember(@PathVariable long memberId) {
+        this.memberService.remove(memberId);
+
+        return "redirect:/members";
     }
 }

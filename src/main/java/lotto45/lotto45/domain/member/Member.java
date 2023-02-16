@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.util.Objects;
@@ -29,6 +30,9 @@ public class Member {
     @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\w).{8,}$",
             message = "최소 8자, 숫자, 영문, 특수 문자가 모두 들어가야 합니다.")
     private String password;
+    @NotEmpty
+    @Email
+    private String email;
 
     @Override
     public boolean equals(Object o) {
