@@ -18,7 +18,6 @@ public class H2LottoWinInfoRepositoryImp implements ILottoWinInfoRepository {
     private EntityManager em;
 
     @Override
-    @Transactional
     public void saveAll(List<LottoWinningInfo> winningInfos) {
 
         for (LottoWinningInfo winningInfo : winningInfos) {

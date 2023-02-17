@@ -2,8 +2,11 @@ package lotto45.lotto45.domain.lotto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import lotto45.lotto45.domain.member.Member;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -15,7 +18,8 @@ public class Lotto {
     @Setter
     @Id
     @GeneratedValue
-    private long id;
+    @Column(name = "lotto_id")
+    private Long id;
     private int num1;
     private int num2;
     private int num3;
@@ -29,8 +33,15 @@ public class Lotto {
     private Map<Integer, LottoColor> lottoColorMap;
     @Transient
     private List<Integer> lottoNumber = new ArrayList<>();
+    @Transient
+    @Setter
+    private boolean bookmark; // 북마크 여부
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     public Lotto() {
+
         NavigableSet<Integer> lottoTreeSet = new TreeSet<>();
         Random random = new Random();
 
@@ -99,4 +110,11 @@ public class Lotto {
         }
         return standardRounds;
     }
+
+    // + 연관관계 메서드
+    public void setMember(Member member) {
+        this.member = member;
+//        member.getLottos().add(this);
+    }
+
 }

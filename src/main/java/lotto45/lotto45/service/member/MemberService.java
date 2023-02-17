@@ -26,6 +26,7 @@ public class MemberService {
         }
     }
 
+    @Transactional
     public void save(Member member) {
         String encryptedPassword = this.encryption.encryptPassword(member.getPassword());
         member.setPassword(encryptedPassword);
@@ -57,6 +58,7 @@ public class MemberService {
         return currentPassword.equals(previousPassword);
     }
 
+    @Transactional
     public void remove(long memberId) {
         this.memberRepository.remove(memberId);
     }

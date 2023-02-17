@@ -1,15 +1,16 @@
 package lotto45.lotto45.domain.member;
 
 import lombok.*;
+import lotto45.lotto45.domain.lotto.Lotto;
 import org.hibernate.Hibernate;
 import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -21,6 +22,7 @@ public class Member {
 
     @Id
     @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
     @NotEmpty
     private String loginId;
@@ -33,6 +35,9 @@ public class Member {
     @NotEmpty
     @Email
     private String email;
+    @OneToMany(mappedBy = "member")
+    @ToString.Exclude
+    private List<Lotto> lottos = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
