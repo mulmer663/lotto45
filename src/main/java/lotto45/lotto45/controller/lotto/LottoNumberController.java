@@ -63,6 +63,7 @@ public class LottoNumberController {
         this.lottoNumberService.saveBookMarkedLotto(last8Numbers, member);
 
         model.addAttribute("last8Numbers", last8Numbers);
+
         return "redirect:/lotto45Plus";
     }
 

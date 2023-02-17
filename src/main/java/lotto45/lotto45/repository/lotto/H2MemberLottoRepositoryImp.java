@@ -16,12 +16,11 @@ import java.util.Queue;
 
 @Slf4j
 @Repository
-@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class H2MemberLottoRepositoryImp implements IMemberLottoRepository {
 
     @PersistenceContext
     private EntityManager em;
-    private static final int MAX_COUNT = 10;
+    private static final int MAX_COUNT = 50;
 
     @Override
     public void save(List<Lotto> lottoList, long memberId) {

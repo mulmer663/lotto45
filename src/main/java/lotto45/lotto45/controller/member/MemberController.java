@@ -93,7 +93,8 @@ public class MemberController {
     @PostMapping("/{memberId}")
     public String editMember(@PathVariable long memberId,
                              @Validated @ModelAttribute("member") MemberDTO form,
-                             BindingResult bindingResult) {
+                             BindingResult bindingResult,
+                             Model model) {
 
         if (!form.getPassword().equals(form.getPasswordVerify())) {
             bindingResult.addError(new FieldError("member", "password", form.getPassword(),
@@ -106,6 +107,7 @@ public class MemberController {
 //        }
         if (bindingResult.hasErrors()) {
             log.info("bindingResult = {}", bindingResult);
+            model.addAttribute("sessionData", "master");
             return "members/editMember";
         }
 
@@ -135,7 +137,8 @@ public class MemberController {
     @PostMapping("/edit/{memberId}")
     public String editMemberSelf(@PathVariable long memberId,
                              @Validated @ModelAttribute("member") MemberDTO form,
-                             BindingResult bindingResult) {
+                             BindingResult bindingResult,
+                                 Model model) {
 
         if (!form.getPassword().equals(form.getPasswordVerify())) {
             bindingResult.addError(new FieldError("member", "password", form.getPassword(),
@@ -144,6 +147,7 @@ public class MemberController {
 
         if (bindingResult.hasErrors()) {
             log.info("bindingResult = {}", bindingResult);
+            model.addAttribute("sessionData", "member");
             return "members/editMember";
         }
 

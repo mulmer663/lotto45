@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.domain.lotto.Lotto;
 import lotto45.lotto45.domain.member.Member;
 import lotto45.lotto45.repository.lotto.IMemberLottoRepository;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,10 +18,11 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class LottoNumberServiceImp implements ILottoNumberService {
 
     private final IMemberLottoRepository memberLottoRepository;
-    private static final Deque<Lotto> lottoQueue = new ArrayDeque<>();
+    private final Deque<Lotto> lottoQueue = new ArrayDeque<>();
 
     @Override
     public Lotto create() {
@@ -49,6 +52,7 @@ public class LottoNumberServiceImp implements ILottoNumberService {
     @Override
     @Transactional
     public void saveBookMarkedLotto(List<Lotto> lottoList, Member member) {
+        log.info("memberLottoRepository = {}", memberLottoRepository);
 
         for (Lotto lotto : lottoList) {
             lotto.setMember(member);
