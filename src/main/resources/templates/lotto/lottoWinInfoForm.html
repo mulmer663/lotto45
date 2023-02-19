@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>saveLottoWinInfo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2>모든 당첨 정보 저장</h2>
+    </div>
+
+    <form th:action="@{/save-lotto_win_info}" method="post">
+
+        <div th:text="|${currentRounds} 당첨회차까지 나왔습니다.|"></div>
+        <br>
+        <div>
+            <label for="rounds">갱신 필요시 최신 회차를 입력하세요.</label>
+            <input type="text" id="rounds" name="rounds" class="form-control" th:placeholder="|현재 DB에는 ${rounds}회차까지 저장되어있습니다.|">
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">저장</button>
+            </div>
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='items.html'"
+                        th:onclick="|location.href='@{/}'|" type="button">홈으로
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</div> <!-- /container -->
+</body>
+
+</html>

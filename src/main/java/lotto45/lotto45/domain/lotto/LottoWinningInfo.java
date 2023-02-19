@@ -1,16 +1,21 @@
 package lotto45.lotto45.domain.lotto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+import lombok.Getter;
+import lombok.ToString;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
+@ToString
 public class LottoWinningInfo {
 
     @Id
