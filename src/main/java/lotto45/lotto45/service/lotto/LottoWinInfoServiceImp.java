@@ -1,14 +1,12 @@
 package lotto45.lotto45.service.lotto;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lotto45.lotto45.domain.lotto.Lotto;
 import lotto45.lotto45.domain.lotto.LottoWinningInfo;
 import lotto45.lotto45.repository.lotto.ILottoWinInfoRepository;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 

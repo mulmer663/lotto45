@@ -1,14 +1,13 @@
 package lotto45.lotto45.domain.member;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import lotto45.lotto45.domain.lotto.Lotto;
 import org.hibernate.Hibernate;
-import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

@@ -1,13 +1,11 @@
 package lotto45.lotto45.repository.lotto;
 
-import lotto45.lotto45.domain.lotto.Lotto;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
 import lotto45.lotto45.domain.lotto.LottoWinningInfo;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

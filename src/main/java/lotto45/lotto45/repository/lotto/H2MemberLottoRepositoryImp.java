@@ -1,18 +1,12 @@
 package lotto45.lotto45.repository.lotto;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.domain.lotto.Lotto;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Transient;
-import javax.transaction.Transactional;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 @Slf4j
 @Repository

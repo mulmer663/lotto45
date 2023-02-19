@@ -1,12 +1,12 @@
 package lotto45.lotto45.repository.member;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lotto45.lotto45.domain.member.Member;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

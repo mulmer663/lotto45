@@ -1,5 +1,7 @@
 package lotto45.lotto45.web.argumentresolver;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.domain.member.Member;
 import lotto45.lotto45.web.SessionConst;
@@ -9,8 +11,6 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Slf4j
 public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolver {

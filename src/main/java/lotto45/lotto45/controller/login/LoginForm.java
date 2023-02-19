@@ -1,8 +1,8 @@
 package lotto45.lotto45.controller.login;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
 
 @Data
 public class LoginForm {

@@ -1,5 +1,6 @@
 package lotto45.lotto45.service.lotto;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.domain.lotto.Lotto;
@@ -9,7 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -52,7 +52,6 @@ public class LottoNumberServiceImp implements ILottoNumberService {
     @Override
     @Transactional
     public void saveBookMarkedLotto(List<Lotto> lottoList, Member member) {
-        log.info("memberLottoRepository = {}", memberLottoRepository);
 
         for (Lotto lotto : lottoList) {
             lotto.setMember(member);

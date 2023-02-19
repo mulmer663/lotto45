@@ -1,5 +1,6 @@
 package lotto45.lotto45.service.member;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lotto45.lotto45.domain.member.Member;
 import lotto45.lotto45.exception.SameLoginIdException;
@@ -7,7 +8,6 @@ import lotto45.lotto45.repository.member.MemberRepository;
 import lotto45.lotto45.service.Encryption;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

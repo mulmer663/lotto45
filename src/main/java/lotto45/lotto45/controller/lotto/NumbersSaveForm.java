@@ -1,9 +1,9 @@
 package lotto45.lotto45.controller.lotto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.NotNull;
 
 @Data
 public class NumbersSaveForm {
