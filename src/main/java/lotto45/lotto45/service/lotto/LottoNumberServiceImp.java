@@ -26,7 +26,7 @@ public class LottoNumberServiceImp implements ILottoNumberService {
 
     @Override
     public Lotto create() {
-        Lotto lotto = new Lotto();
+        Lotto lotto = Lotto.createLotto();
 
         if (lottoQueue.size() < 8) {
             lottoQueue.add(lotto);
@@ -74,6 +74,11 @@ public class LottoNumberServiceImp implements ILottoNumberService {
 
     @Override
     public List<Lotto> findAll(long memberId) {
+        List<Lotto> lottoList = this.memberLottoRepository.findByMemberId(memberId);
+
+        for (Lotto lotto : lottoList) {
+            Lotto.putValuesMapAndList(lotto);
+        }
         return this.memberLottoRepository.findByMemberId(memberId);
     }
 
@@ -81,12 +86,9 @@ public class LottoNumberServiceImp implements ILottoNumberService {
     @Transactional
     public void removeUnBookMarkedLotto(List<Lotto> lottoList, long memberId) {
 
-        List<Lotto> savedLottoList = this.memberLottoRepository.findByMemberId(memberId);
-
         // 북마크가 해제된 로또 인지 체크하고 저장된 로또인지도 체크
         List<Lotto> toEraseLottoList = lottoList.stream()
                 .filter(l -> !l.isBookmark())
-                .filter(savedLottoList::contains)
                 .toList();
 
         this.memberLottoRepository.delete(toEraseLottoList);

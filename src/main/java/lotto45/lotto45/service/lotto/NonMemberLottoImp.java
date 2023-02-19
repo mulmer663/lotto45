@@ -9,18 +9,17 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import java.util.Queue;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class NomMemberLottoImp implements INonMemberLottoService {
+public class NonMemberLottoImp implements INonMemberLottoService {
 
     private final INonMemberLottoRepository nonMemberLottoRepository;
 
     @Override
     public Lotto create() {
-        Lotto lotto = new Lotto();
+        Lotto lotto = Lotto.createLotto();
 //        log.info("nonMemberLottoRepository = {}", nonMemberLottoRepository);
         this.nonMemberLottoRepository.save(lotto);
 

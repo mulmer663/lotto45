@@ -11,5 +11,5 @@ import java.util.List;
 public class LottoMemberForm {
 
     private Lotto lotto;
-    private List<Lotto> last8Numbers;
+    private List<Lotto> lottoList;
 }

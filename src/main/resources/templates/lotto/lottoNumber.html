@@ -8,11 +8,22 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-danger p-3 shadow sticky-top">
-    <div class="container">
-        <a href="/" class="navbar-brand text-white">
+<nav class="navbar navbar-expand-sm bg-danger p-2 shadow sticky-top">
+    <div class="container d-flex justify-content-between">
+        <a href="/" class="navbar-brand text-white p-2">
             <h3 class="m-0">로또 생성기</h3>
         </a>
+        <div class="p-2" style="width: 10%"></div>
+        <div class="p-2 btn-group" role="group">
+            <button class="btn btn-primary"
+                    th:onclick="|location.href='@{/lotto45}'|"
+                    type="button">번호생성
+            </button>
+            <button class="btn btn-success"
+                    th:onclick="|location.href='@{/}'|"
+                    type="button">홈으로
+            </button>
+        </div>
     </div>
 </nav>
 
@@ -20,19 +31,10 @@
 
 
     <div class="card text-center my-3">
-        <div class="card-header py-2 d-flex justify-content-between">
-            <div class="p-2" style="width: 8%"></div>
-            <div class="p-2">
-                <strong>로또번호생성
-                    <small class="text-muted" th:text="|ID. ${lotto.id} / ${lotto.rounds}회|"></small>
-                </strong>
-            </div>
-            <div class="p-2">
-                <button class="btn btn-sm btn-primary"
-                        th:onclick="|location.href='@{/lotto45}'|"
-                        type="button">번호 생성
-                </button>
-            </div>
+        <div class="card-header py-2">
+            <strong>로또번호생성
+                <small class="text-muted" th:text="|ID. ${lotto.id} / ${lotto.rounds}회차|"></small>
+            </strong>
         </div>
         <div class="card-body mx-auto pb-1 d-flex">
 
@@ -51,15 +53,13 @@
         </div>
     </div>
 
-
-    <h4 class="text-center">로또 번호 생성 내역</h4>
     <div class="row">
         <th:block th:each="lottoHistory : ${last8Numbers}">
             <div class="col-md-6">
                 <div class="card text-center my-3">
                     <div class="card-header py-2">
                         <strong>로또번호생성
-                            <small class="text-muted" th:text="|ID. ${lotto.id} / ${lotto.rounds}회|"></small>
+                            <small class="text-muted" th:text="|ID. ${lottoHistory.id} / ${lotto.rounds}회차|"></small>
                         </strong>
                     </div>
                     <div class="card-body mx-auto pb-1 d-flex">
@@ -74,7 +74,7 @@
 
                     </div>
                     <div class="mx-auto pb-2">
-                        <small class="text-muted" th:text="${#temporals.format(lotto.getDateTime,'yyyy-MM-dd HH:mm:ss')}">2023-02-03:00:00</small>
+                        <small class="text-muted" th:text="${#temporals.format(lottoHistory.dateTime,'yyyy-MM-dd HH:mm:ss')}">2023-02-03:00:00</small>
                     </div>
                 </div>
             </div>

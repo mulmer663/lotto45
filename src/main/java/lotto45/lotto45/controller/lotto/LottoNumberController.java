@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class LottoNumberController {
     private final INonMemberLottoService nonMemberLottoService;
 
     @GetMapping("/lotto45Plus")
-    public String memberLottoNumber(Model model) {
+    public String memberLottoNumber(@Login Member member, Model model) {
 
         Lotto lotto = lottoNumberService.create();
         List<Lotto> last8Numbers = lottoNumberService.lastLottoNumber8();
@@ -35,6 +36,7 @@ public class LottoNumberController {
 //            log.info("lottoNum.isBookmark() = {}", lottoNum.isBookmark());
 //        }
         model.addAttribute("form", form);
+        model.addAttribute("member", member);
 
         return "lotto/lottoNumberPlus";
     }
@@ -43,18 +45,55 @@ public class LottoNumberController {
     public String memberBookMarKLotto(@ModelAttribute("form") LottoMemberForm form,
                                       @Login Member member) {
 
-        List<Lotto> formLast8Numbers = form.getLast8Numbers();
-        List<Lotto> savedLastLottoNumber8 = this.lottoNumberService.lastLottoNumber8();
+        List<Lotto> formLast8Numbers = form.getLottoList();
+        List<Lotto> lastLottoNumber8 = this.lottoNumberService.lastLottoNumber8();
 
         int count = 0;
         for (int i = 0; i < formLast8Numbers.size(); i++) {
-            savedLastLottoNumber8.get(i).setBookmark(formLast8Numbers.get(i).isBookmark());
+            lastLottoNumber8.get(i).setBookmark(formLast8Numbers.get(i).isBookmark());
 //            log.info("lotto.isBookmark(){} = {}", count++, formLast8Numbers.get(i).isBookmark());
         }
 
-        this.lottoNumberService.saveBookMarkedLotto(formLast8Numbers, member);
+        this.lottoNumberService.saveBookMarkedLotto(lastLottoNumber8, member);
 
         return "redirect:/lotto45Plus";
+    }
+
+    @GetMapping("/lotto45Plus/{memberId}")
+    public String memberBookMarkList(@PathVariable long memberId, @Login Member member, Model model) {
+
+        if (member.getId() != memberId) {
+            throw new RuntimeException("로그인한 맴버와 접속한 페이지의 id가 일치하지 않습니다.");
+        }
+
+        List<Lotto> bookmarks = this.lottoNumberService.findAll(memberId);
+        for (Lotto lotto : bookmarks) {
+            lotto.setBookmark(true);
+        }
+
+        LottoMemberForm form = new LottoMemberForm(null, bookmarks);
+        model.addAttribute("form", form);
+        model.addAttribute("member", member);
+
+        return "lotto/bookmarks";
+    }
+
+    @PostMapping("/lotto45Plus/{memberId}")
+    public String editMemberBookMarkList(@PathVariable long memberId,
+                                         @ModelAttribute("form") LottoMemberForm form) {
+
+        List<Lotto> bookmarkList = form.getLottoList();
+        List<Lotto> savedBookmarkList = this.lottoNumberService.findAll(memberId);
+
+        for (int i = 0; i < bookmarkList.size(); i++) {
+            log.info("bookmarkList.get({}) = {}", i, bookmarkList.get(i));
+            log.info("savedBookmarkList.get({}) = {}", i, savedBookmarkList.get(i));
+            savedBookmarkList.get(i).setBookmark(bookmarkList.get(i).isBookmark());
+        }
+
+        this.lottoNumberService.removeUnBookMarkedLotto(savedBookmarkList, memberId);
+
+        return "redirect:/lotto45Plus/" + memberId;
     }
 
     @GetMapping("/lotto45")
