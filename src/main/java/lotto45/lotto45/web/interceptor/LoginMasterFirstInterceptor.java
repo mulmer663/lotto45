@@ -15,7 +15,7 @@ public class LoginMasterFirstInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String requestURI = request.getRequestURI();
-        log.info("LoginMasterFirst 인터셉터 실행 {}", requestURI);
+//        log.info("LoginMasterFirst 인터셉터 실행 {}", requestURI);
 
         HttpSession session = request.getSession();
 
@@ -26,7 +26,7 @@ public class LoginMasterFirstInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        log.info("관리자 1번째 인증 통과");
+//        log.info("관리자 1번째 인증 통과");
         return true;
     }
 }

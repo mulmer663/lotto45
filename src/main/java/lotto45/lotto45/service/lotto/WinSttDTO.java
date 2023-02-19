@@ -22,4 +22,11 @@ public class WinSttDTO {
     private int bonusNum;
     private long winAmount;
 
+    public void clear() {
+        this.rounds = 0;
+        this.lottoNums.clear();
+        this.rank = 0;
+        this.bonusNum = 0;
+        this.winAmount = 0;
+    }
 }

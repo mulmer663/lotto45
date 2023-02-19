@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class LottoNumberServiceImp implements ILottoNumberService {
+public class MemberLottoServiceImp implements IMemberLottoService {
 
     private final IMemberLottoRepository memberLottoRepository;
     private final Deque<Lotto> lottoQueue = new ArrayDeque<>();
@@ -79,7 +79,8 @@ public class LottoNumberServiceImp implements ILottoNumberService {
         for (Lotto lotto : lottoList) {
             Lotto.putValuesMapAndList(lotto);
         }
-        return this.memberLottoRepository.findByMemberId(memberId);
+
+        return lottoList;
     }
 
     @Override

@@ -3,10 +3,9 @@ package lotto45.lotto45.service.lotto;
 import lotto45.lotto45.domain.lotto.Lotto;
 import lotto45.lotto45.domain.member.Member;
 
-import java.util.Deque;
 import java.util.List;
 
-public interface ILottoNumberService {
+public interface IMemberLottoService {
 
     Lotto create();
     List<Lotto> lastLottoNumber8();

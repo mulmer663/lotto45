@@ -6,6 +6,11 @@
     <title>saveLottoWinInfo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,9 +22,11 @@
 
     <form th:action="@{/save-lotto_win_info}" method="post">
 
+        <div th:text="|${currentRounds} 당첨회차까지 나왔습니다.|"></div>
+        <br>
         <div>
-            <label for="rounds">아래의 회차까지의 모든 당첨 정보를 저장합니다.</label>
-            <input type="text" id="rounds" name="rounds" class="form-control" th:placeholder="|${rounds}회까지 저장되어있습니다.|">
+            <label for="rounds">갱신 필요시 최신 회차를 입력하세요.</label>
+            <input type="text" id="rounds" name="rounds" class="form-control" th:placeholder="|현재 DB에는 ${rounds}회차까지 저장되어있습니다.|">
         </div>
 
         <hr class="my-4">

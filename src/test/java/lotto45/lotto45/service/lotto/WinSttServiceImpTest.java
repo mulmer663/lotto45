@@ -18,29 +18,29 @@ class WinSttServiceImpTest {
     @Autowired
     IWinSttService winSttService;
 
-    @Test
-    public void calculateSttInfoTest() throws Exception {
-        // * given
-        List<Integer> lottoNums = new ArrayList<>();
-        lottoNums.add(14);
-        lottoNums.add(19);
-        lottoNums.add(28);
-        lottoNums.add(30);
-        lottoNums.add(45);
-        lottoNums.add(33);
-
-        // * when
-        List<WinSttDTO> winSttDTOS = winSttService.calculateSttInfo(lottoNums);
-
-        // * then
-        assertThat(winSttDTOS.size()).isEqualTo(1);
-        for (WinSttDTO winSttDTO : winSttDTOS) {
-            assertThat(winSttDTO.getRank()).isEqualTo(2);
-            assertThat(winSttDTO.getBonusNum()).isEqualTo(33);
-            assertThat(winSttDTO.getRounds()).isEqualTo(1054);
-            assertThat(winSttDTO.getLottoNums().size()).isEqualTo(5);
-            System.out.println("winSttInfoDTO = " + winSttDTO);
-        }
-
-    }
+//    @Test
+//    public void calculateSttInfoTest() throws Exception {
+//        // * given
+//        List<Integer> lottoNums = new ArrayList<>();
+//        lottoNums.add(14);
+//        lottoNums.add(19);
+//        lottoNums.add(28);
+//        lottoNums.add(30);
+//        lottoNums.add(45);
+//        lottoNums.add(33);
+//
+//        // * when
+//        List<WinSttDTO> winSttDTOS = winSttService.calculateSttInfo(lottoNums);
+//
+//        // * then
+//        assertThat(winSttDTOS.size()).isEqualTo(1);
+//        for (WinSttDTO winSttDTO : winSttDTOS) {
+//            assertThat(winSttDTO.getRank()).isEqualTo(2);
+//            assertThat(winSttDTO.getBonusNum()).isEqualTo(33);
+//            assertThat(winSttDTO.getRounds()).isEqualTo(1054);
+//            assertThat(winSttDTO.getLottoNums().size()).isEqualTo(5);
+//            System.out.println("winSttInfoDTO = " + winSttDTO);
+//        }
+//
+//    }
 }

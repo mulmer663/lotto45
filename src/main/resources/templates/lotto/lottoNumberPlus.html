@@ -32,7 +32,7 @@
 
     <div class="container">
 
-        <div class="card text-center my-3">
+        <div class="card text-center my-2">
             <div class="card-header py-2">
                 <strong>로또번호생성
                     <small class="text-muted" th:text="| *{lotto.rounds}회차|"></small>
@@ -60,7 +60,7 @@
         <div class="row">
             <th:block th:each="lottoHis, i : *{lottoList}">
                 <div class="col-md-6">
-                    <div class="card text-center my-3">
+                    <div class="card text-center my-2">
                         <div class="card-header py-1 d-flex justify-content-between">
                             <div class="p-2" style="width: 15%"></div>
                             <div class="p-2">

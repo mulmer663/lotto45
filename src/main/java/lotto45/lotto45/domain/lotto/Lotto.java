@@ -120,7 +120,7 @@ public class Lotto {
 
         lotto.rounds = lotto.findRounds();
 
-        log.info("lottoNumber = {}", lotto.lottoNumber);
+//        log.info("lottoNumber = {}", lotto.lottoNumber);
 
         return lotto;
     }

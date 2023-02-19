@@ -30,7 +30,7 @@
 <div class="container">
 
 
-    <div class="card text-center my-3">
+    <div class="card text-center my-2">
         <div class="card-header py-2">
             <strong>로또번호생성
                 <small class="text-muted" th:text="|ID. ${lotto.id} / ${lotto.rounds}회차|"></small>
@@ -56,7 +56,7 @@
     <div class="row">
         <th:block th:each="lottoHistory : ${last8Numbers}">
             <div class="col-md-6">
-                <div class="card text-center my-3">
+                <div class="card text-center my-2">
                     <div class="card-header py-2">
                         <strong>로또번호생성
                             <small class="text-muted" th:text="|ID. ${lottoHistory.id} / ${lotto.rounds}회차|"></small>

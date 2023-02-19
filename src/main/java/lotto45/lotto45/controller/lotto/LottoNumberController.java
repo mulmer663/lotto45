@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotto45.lotto45.domain.lotto.Lotto;
 import lotto45.lotto45.domain.member.Member;
-import lotto45.lotto45.service.lotto.ILottoNumberService;
+import lotto45.lotto45.service.lotto.IMemberLottoService;
 import lotto45.lotto45.service.lotto.INonMemberLottoService;
 import lotto45.lotto45.web.argumentresolver.Login;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LottoNumberController {
 
-    private final ILottoNumberService lottoNumberService;
+    private final IMemberLottoService lottoNumberService;
     private final INonMemberLottoService nonMemberLottoService;
 
     @GetMapping("/lotto45Plus")
@@ -86,8 +86,6 @@ public class LottoNumberController {
         List<Lotto> savedBookmarkList = this.lottoNumberService.findAll(memberId);
 
         for (int i = 0; i < bookmarkList.size(); i++) {
-            log.info("bookmarkList.get({}) = {}", i, bookmarkList.get(i));
-            log.info("savedBookmarkList.get({}) = {}", i, savedBookmarkList.get(i));
             savedBookmarkList.get(i).setBookmark(bookmarkList.get(i).isBookmark());
         }
 

@@ -35,6 +35,7 @@ public class H2MemberLottoRepositoryImp implements IMemberLottoRepository {
 
     @Override
     public List<Lotto> findByMemberId(long memberId) {
+
         return em.createQuery("SELECT l FROM Lotto l JOIN l.member m" +
                               " WHERE m.id = :memberId" +
                               " ORDER BY l.dateTime", Lotto.class)

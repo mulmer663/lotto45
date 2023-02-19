@@ -8,80 +8,87 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
         .container {
-            max-width: 500px;
+            max-width: 700px;
         }
     </style>
     <title>Document</title>
 </head>
 <body>
-<div class="card text-center my-3">
-    <div class="card-header py-2">
-        <strong>로또당첨번호 <small class="text-muted" th:text="|${winInfo.drwNo}회|"></small></strong>
-    </div>
-    <div class="card-body mx-auto pb-1 d-flex">
-        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-             th:attrappend="class=| bg-${winInfo.colorList[0]}|"
-             style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${winInfo.drwtNo1}">45</span>
+<div class="container">
+    <div class="card text-center my-3">
+        <div class="card-header py-2">
+            <strong>로또당첨번호 <small class="text-muted" th:text="|${winInfo.drwNo}회|"></small></strong>
         </div>
-        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-             th:attrappend="class=| bg-${winInfo.colorList[1]}|"
-             style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${winInfo.drwtNo2}">45</span>
+        <div class="card-body mx-auto pb-1 d-flex">
+            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                 th:attrappend="class=| bg-${winInfo.colorList[0]}|"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${winInfo.drwtNo1}">45</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                 th:attrappend="class=| bg-${winInfo.colorList[1]}|"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${winInfo.drwtNo2}">45</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                 th:attrappend="class=| bg-${winInfo.colorList[2]}|"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${winInfo.drwtNo3}">45</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                 th:attrappend="class=| bg-${winInfo.colorList[3]}|"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${winInfo.drwtNo4}">45</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                 th:attrappend="class=| bg-${winInfo.colorList[4]}|"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${winInfo.drwtNo5}">45</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                 th:attrappend="class=| bg-${winInfo.colorList[5]}|"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${winInfo.drwtNo6}">45</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mx-1"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold">+</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
+                 th:attrappend="class=| bg-${winInfo.colorList[6]}|"
+                 style="width: 2.5rem; height: 2.5rem;">
+                <span class="fw-bold text-light" th:text="${winInfo.bnusNo}">45</span>
+            </div>
         </div>
-        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-             th:attrappend="class=| bg-${winInfo.colorList[2]}|"
-             style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${winInfo.drwtNo3}">45</span>
+        <div class="mx-auto pb-2">
+            <small class="text-muted"
+                   th:text="${#temporals.format(winInfo.drwNoDate,'yyyy-MM-dd')}"></small>
         </div>
-        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-             th:attrappend="class=| bg-${winInfo.colorList[3]}|"
-             style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${winInfo.drwtNo4}">45</span>
+        <div class="mx-auto pb-2">
+            <small class="text-muted"
+                   th:text="|총 판매금액 : ${winInfo.totSellamnt}|"></small>
         </div>
-        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-             th:attrappend="class=| bg-${winInfo.colorList[4]}|"
-             style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${winInfo.drwtNo5}">45</span>
+        <div class="mx-auto pb-2">
+            <small class="text-muted"
+                   th:text="|1등 총 당첨금액 : ${winInfo.firstWinamnt}|"></small>
         </div>
-        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-             th:attrappend="class=| bg-${winInfo.colorList[5]}|"
-             style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${winInfo.drwtNo6}">45</span>
+        <div class="mx-auto pb-2">
+            <small class="text-muted"
+                   th:text="|1등 개인당 당첨금액 : ${winInfo.firstAccumamnt}|"></small>
         </div>
-        <div class="d-flex align-items-center justify-content-center rounded-circle mx-1"
-             th:attrappend="class=| bg-${winInfo.colorList[6]}|"
-             style="width: 2.5rem; height: 2.5rem;">
-            <span class="fw-bold text-light" th:text="${winInfo.bnusNo}">45</span>
+        <div class="mx-auto pb-2">
+            <small class="text-muted"
+                   th:text="|1등 당첨 수 : ${winInfo.firstPrzwnerCo}|"></small>
         </div>
-    </div>
-    <div class="mx-auto pb-2">
-        <small class="text-muted"
-               th:text="${#temporals.format(winInfo.drwNoDate,'yyyy-MM-dd')}"></small>
-    </div>
-    <div class="mx-auto pb-2">
-        <small class="text-muted"
-               th:text="|총 판매금액 : ${winInfo.totSellamnt}|"></small>
-    </div>
-    <div class="mx-auto pb-2">
-        <small class="text-muted"
-               th:text="|1등 총 당첨금액 : ${winInfo.firstWinamnt}|"></small>
-    </div>
-    <div class="mx-auto pb-2">
-        <small class="text-muted"
-               th:text="|1등 개인당 당첨금액 : ${winInfo.firstAccumamnt}|"></small>
-    </div>
-    <div class="mx-auto pb-2">
-        <small class="text-muted"
-               th:text="|1등 당첨 수 : ${winInfo.firstPrzwnerCo}|"></small>
     </div>
 </div>
 
 <div class="container text-center">
     <form th:action="@{/winningInfo}" method="post">
-        <div class="form-group row">
-            <label for="rounds"> 회차</label>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
             <input type="text" id="rounds" name="rounds" class="form-control" placeholder="회차를 입력">
+            </div>
         </div>
         <br>
         <button type="submit" class="btn btn-lg btn-primary">Submit</button>

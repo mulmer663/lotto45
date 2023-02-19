@@ -34,32 +34,47 @@
             <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류 메시지</p>
         </div>
 
-        <div>
-            <label th:for="loginId">로그인 ID</label>
-            <input type="text" th:field="*{loginId}" class="form-control" th:errorclass="field-error">
-            <div class="field-error" th:errors="*{loginId}"></div>
+        <div class="input-group has-validation">
+            <span class="input-group-text">@</span>
+            <div class="form-floating is-invalid">
+                <input type="text" th:field="*{loginId}" class="form-control" th:errorclass="is-invalid" placeholder="LoginID">
+                <label th:for="loginId">ID</label>
+            </div>
+            <div class="invalid-feedback" th:errors="*{loginId}"></div>
         </div>
-
-        <div>
-            <label th:for="password">비밀번호</label>
-            <input type="password" th:field="*{password}" class="form-control" th:errorclass="field-error">
-            <div class="field-error" th:errors="*{password}"></div>
+        <br>
+        <div class="input-group has-validation">
+            <div class="form-floating is-invalid">
+                <input type="password" th:field="*{password}" class="form-control" th:errorclass="is-invalid" placeholder="LoginID">
+                <label th:for="password">Password</label>
+            </div>
+            <div class="invalid-feedback" th:errors="*{password}"></div>
         </div>
-        <div>
-            <label th:for="passwordVerify">비밀번호 확인</label>
-            <input type="password" th:field="*{passwordVerify}" class="form-control" th:errorclass="field-error">
-            <div class="field-error" th:errors="*{passwordVerify}"></div>
+        <br>
+        <div class="input-group has-validation">
+            <div class="form-floating is-invalid">
+                <input type="password" th:field="*{passwordVerify}" class="form-control" th:errorclass="is-invalid" placeholder="LoginID">
+                <label th:for="passwordVerify">Confirm Password</label>
+            </div>
+            <div class="invalid-feedback" th:errors="*{passwordVerify}"></div>
         </div>
-        <div>
-            <label th:for="name">이름</label>
-            <input type="text" th:field="*{name}" class="form-control" th:errorclass="field-error">
-            <div class="field-error" th:errors="*{name}"></div>
+        <br>
+        <div class="input-group has-validation">
+            <span class="input-group-text">@</span>
+            <div class="form-floating is-invalid">
+                <input type="text" th:field="*{name}" class="form-control" th:errorclass="is-invalid" placeholder="LoginID">
+                <label th:for="name">Name</label>
+            </div>
+            <div class="invalid-feedback" th:errors="*{name}"></div>
         </div>
-
-        <div>
-            <label th:for="email">이메일</label>
-            <input type="text" th:field="*{email}" class="form-control" th:errorclass="field-error">
-            <div class="field-error" th:errors="*{email}"></div>
+        <br>
+        <div class="input-group has-validation">
+            <span class="input-group-text">@</span>
+            <div class="form-floating is-invalid">
+                <input type="text" th:field="*{email}" class="form-control" th:errorclass="is-invalid" placeholder="LoginID">
+                <label th:for="email">Email</label>
+            </div>
+            <div class="invalid-feedback" th:errors="*{email}"></div>
         </div>
 
         <hr class="my-4">

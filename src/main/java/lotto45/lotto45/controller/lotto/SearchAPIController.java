@@ -47,7 +47,7 @@ public class SearchAPIController {
     @GetMapping("/winningInfo")
     public String lottoWinningInfo(Integer rounds, Model model) throws IOException {
 
-        Lotto lotto = new Lotto();
+        Lotto lotto = Lotto.createLotto();
         rounds = lotto.getRounds() - 1;
 
         objectMapper.registerModule(new JavaTimeModule());
@@ -59,7 +59,7 @@ public class SearchAPIController {
                         rounds);
         LottoWinningInfo winInfo = objectMapper.readValue(messageBody, LottoWinningInfo.class);
         winInfo.makeColorList();
-        log.info("winInfo = {}", winInfo);
+//        log.info("winInfo = {}", winInfo);
 
         model.addAttribute("winInfo", winInfo);
         model.addAttribute("rounds", rounds);
@@ -79,7 +79,7 @@ public class SearchAPIController {
                         rounds);
         LottoWinningInfo winInfo = objectMapper.readValue(messageBody, LottoWinningInfo.class);
         winInfo.makeColorList();
-        log.info("winInfo = {}", winInfo);
+//        log.info("winInfo = {}", winInfo);
 
         model.addAttribute("winInfo", winInfo);
         return "lotto/lottoWinInfo";

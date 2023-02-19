@@ -15,7 +15,7 @@ public class LoginMasterSecondInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String requestURI = request.getRequestURI();
-        log.info("LoginMasterSecond 인터셉터 실행 {}", requestURI);
+//        log.info("LoginMasterSecond 인터셉터 실행 {}", requestURI);
 
         HttpSession session = request.getSession();
 
@@ -26,8 +26,8 @@ public class LoginMasterSecondInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        log.info("관리자 2번째 인증 통과");
-        log.warn("당신은 관리자 권환을 획득 하였습니다.");
+//        log.info("관리자 2번째 인증 통과");
+//        log.warn("당신은 관리자 권환을 획득 하였습니다.");
         return true;
     }
 }

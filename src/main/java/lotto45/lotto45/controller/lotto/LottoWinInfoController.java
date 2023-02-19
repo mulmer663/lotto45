@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lotto45.lotto45.domain.lotto.Lotto;
 import lotto45.lotto45.domain.lotto.LottoWinningInfo;
 import lotto45.lotto45.service.lotto.ILottoWinInfoService;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,11 @@ public class LottoWinInfoController {
     @GetMapping("/save-lotto_win_info")
     public String lottoWinInfo(Model model) {
 
+        Lotto lotto = Lotto.createLotto();
+        int currentRounds = lotto.getRounds() - 1;
         int rounds = this.lottoWinInfoService.getRounds();
+
+        model.addAttribute("currentRounds", currentRounds);
         model.addAttribute("rounds", rounds);
 
         return "lotto/lottoWinInfoForm";

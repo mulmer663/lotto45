@@ -16,7 +16,7 @@ public class LoginMemberInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String requestURI = request.getRequestURI();
-        log.info("LoginMember 인터셉터 실행 {}", requestURI);
+//        log.info("LoginMember 인터셉터 실행 {}", requestURI);
 
         HttpSession session = request.getSession();
 
@@ -28,7 +28,7 @@ public class LoginMemberInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        log.info("회원입니다.");
+//        log.info("회원입니다.");
         return true;
     }
 }
