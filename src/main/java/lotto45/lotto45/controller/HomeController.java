@@ -17,13 +17,18 @@ public class HomeController {
 
         HttpSession session = request.getSession();
 
+        // * ArgumentResolvers 활용해 바로 로그인한 회원에 접근할 수 있고 만약 그 값이 null이면
+        // * 비회원이므로 비회원 홈페이지에 연결합니다.
         if (loginMember == null) {
             return "home";
+
+        // * 만약 관리자 인증 세션을 두 개 다 가지고 있다면 masterHome 홈페이지에 연결합니다.
         } else if (session.getAttribute(SessionConst.LOGIN_MASTER_1ST_AUTH) != null &&
                    session.getAttribute(SessionConst.LOGIN_MASTER_2ND_AUTH) != null) {
             return "redirect:/masterHome";
         }
 
+        // * 그 외의 경우에는 회원 홈페이지에 연결합니다.
         model.addAttribute("member", loginMember);
         return "loginHome";
     }
