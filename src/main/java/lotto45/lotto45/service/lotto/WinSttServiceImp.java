@@ -15,7 +15,6 @@ import java.util.List;
 public class WinSttServiceImp implements IWinSttService {
 
     private final ILottoWinInfoRepository lottoWinInfoRepository;
-    private final IMemberLottoRepository memberLottoRepository;
 
     /**
      * 리포지토리에서 저장된 모든 당첨 정보를 꺼낸 후 매개변수 로또 정보와 비교해서 당첨 통계를 만드는 메서드

@@ -35,6 +35,7 @@ public class MemberController {
     @PostMapping("/add")
     public String save(@Valid @ModelAttribute("member") MemberDTO form, BindingResult bindingResult, HttpServletRequest request) {
 
+        // * 비밀번호와 비밀번호 확인 불일치
         if (!form.getPassword().equals(form.getPasswordVerify())) {
             bindingResult.addError(new FieldError("member", "password", form.getPassword(),
                     false, null, null, "비밀번호와 비밀번호 확인이 일치하지 않습니다."));
@@ -46,6 +47,7 @@ public class MemberController {
         member.setPassword(form.getPassword());
         member.setEmail(form.getEmail());
 
+        // * 로그인 아이디 중복 체크
         try {
             this.memberService.check(member);
         } catch (SameLoginIdException e) {

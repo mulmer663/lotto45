@@ -69,6 +69,7 @@
                                 </strong>
                             </div>
                             <div class="p-2 btn-group" role="group">
+                                <!-- * thymeleaf 문법을 활용해 로또 번호 도메인이 가지고 있는 북마크 필드에 매핑하는 코드-->
                                 <input class="form-check-input" type="checkbox" th:field="*{lottoList[__${i.index}__].bookmark}">
                                 <label class="form-check-label" th:for="bookmark">&nbsp;북마크</label>
                             </div>

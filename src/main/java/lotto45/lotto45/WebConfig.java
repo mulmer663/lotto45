@@ -22,6 +22,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
+        // * 회원 인터셉터는 기본적으로 모든 페이지를 인터셉터하고
+        // * 비회원 기능 페이지와 관리자 기능 페이지를 예외로 설정한다.
         registry.addInterceptor(new LoginMemberInterceptor())
                 .order(1)
                 .addPathPatterns("/**")

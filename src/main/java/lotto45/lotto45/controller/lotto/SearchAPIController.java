@@ -70,14 +70,20 @@ public class SearchAPIController {
     public String getLottoWinningInfo(Integer rounds, Model model) throws IOException {
 
         log.info("rounds = {}", rounds);
+        // * LottoWinningInfo 도메인에 LocalDate 필드가 있기 때문에
+        // * 아래 코드를 넣어 ObjectMapper가 LocalDate를 매핑할 수 있도록 한다.
         objectMapper.registerModule(new JavaTimeModule());
         RestTemplate restTemplate = new RestTemplate();
 
+        // * Http Body의 내용을 가져온다.
         String messageBody = restTemplate.getForObject
                 ("https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo={rounds}",
                         String.class,
                         rounds);
+
+        // * 가져온 내용을 LottoWinningInfo 도메인에 매핑한다.
         LottoWinningInfo winInfo = objectMapper.readValue(messageBody, LottoWinningInfo.class);
+
         winInfo.makeColorList();
 //        log.info("winInfo = {}", winInfo);
 

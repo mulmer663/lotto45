@@ -45,15 +45,20 @@ public class LottoNumberController {
     public String memberBookMarKLotto(@ModelAttribute("form") LottoMemberForm form,
                                       @Login Member member) {
 
+        // * View에서 가져온 로또 리스트입니다. 해당 리스트의 도메인 Lotto에는 오직 Bookmark 필드만 값이 있으며
+        // * 나머지 필드는 전부 null인 상태입니다.
         List<Lotto> formLast8Numbers = form.getLottoList();
+        // * 서비스에서 저장중인 로또 번호 8개 큐입니다.
         List<Lotto> lastLottoNumber8 = this.lottoNumberService.lastLottoNumber8();
 
         int count = 0;
+        // * 서비스에 저장중인 로또 번호에 북마크 필드 값을 반영해 줍니다.
         for (int i = 0; i < formLast8Numbers.size(); i++) {
             lastLottoNumber8.get(i).setBookmark(formLast8Numbers.get(i).isBookmark());
 //            log.info("lotto.isBookmark(){} = {}", count++, formLast8Numbers.get(i).isBookmark());
         }
 
+        // * 그 다음 북마크 저장 메소드를 호출합니다.
         this.lottoNumberService.saveBookMarkedLotto(lastLottoNumber8, member);
 
         return "redirect:/lotto45Plus";
