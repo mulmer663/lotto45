@@ -64,7 +64,7 @@
 ### 4.1 도메인 생성자에 로직을 넣어서 생긴 문제
 
 <details>
-<summary><b>기존 코드</b></summary>
+<summary><b>:sparkles:기존 코드</b></summary>
 <div markdown="1">
 </br>
 
@@ -79,7 +79,7 @@
 </details>
 
 <details>
-<summary><b>개선된 코드</b></summary>
+<summary><b>:sparkles:개선된 코드</b></summary>
 <div markdown="1">
 </br>
 
@@ -95,7 +95,7 @@
 ### 4.2 스프링 빈 싱글톤 때문에 접속하는 모든 클라이언트가 같은 로또 추천 화면을 공유하는 문제
 
 <details>
-<summary><b>기존 코드</b></summary>
+<summary><b>:sparkles:기존 코드</b></summary>
 <div markdown="1">
 </br>
 
@@ -108,7 +108,7 @@
 </details>
 
 <details>
-<summary><b>개선된 코드</b></summary>
+<summary><b>:sparkles:개선된 코드</b></summary>
 <div markdown="1">
 </br>
 
@@ -130,7 +130,7 @@ public class LottoNumberServiceImp implements ILottoNumberService {
 ### 4.3 JPA 영속화와 @Transient으로 생기는 문제
 
 <details>
-<summary><b>기존 코드</b></summary>
+<summary><b>:sparkles:기존 코드</b></summary>
 <div markdown="1">
 </br>
 
@@ -143,7 +143,7 @@ public class LottoNumberServiceImp implements ILottoNumberService {
 </details>
 
 <details>
-<summary><b>개선된 코드</b></summary>
+<summary><b>:sparkles:개선된 코드</b></summary>
 <div markdown="1">
 
 ~~~java
