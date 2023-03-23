@@ -1,6 +1,7 @@
 # :sparkles: lotto45
 > 회원제 로또 추천 사이트 </br>
-> h2.bat을 실행 시킨 후 Lotto45Application.java 실행  
+> h2.bat을 실행 시킨 후 Lotto45Application.java 실행 </br>
+> 관리자 아이디 : master, 관리자 1차 비밀번호 : master1!, 관리자 2차 비밀번호 : master1!
 
 ## 1. 제작기간 & 참여인원
 - 기간 : 2023년 2월 5일 ~ 2023년 2월 17일
